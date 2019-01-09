@@ -17,7 +17,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.IntroActivity" />
-        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.LoginActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.HomeScreenActivity"></activity>
     </application>
 
 </manifest>

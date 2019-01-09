@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/near_me"
+        android:title="DailyTips"
+
+        android:color="@color/colorPrimaryDark"
+        app:showAsAction="withText"
+        />
+    <item
+        android:id="@+id/explore"
+        android:title="GhareluNukshe"
+
+        android:color="@color/colorPrimaryDark"
+        app:showAsAction="withText"
+        />
+    <item
+        android:id="@+id/cart"
+        android:title="CheckMe"
+
+        android:color="@color/colorPrimaryDark"
+        />
+
+    <item
+        android:id="@+id/account"
+
+        android:title="FinDisease"
+        android:color="@color/colorPrimaryDark"
+        />
+
+</menu>
