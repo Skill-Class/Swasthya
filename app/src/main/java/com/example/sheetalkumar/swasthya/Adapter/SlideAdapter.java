@@ -30,11 +30,11 @@ public class SlideAdapter extends PagerAdapter {
             R.drawable.ic_undraw_feeling_blue_4b7q,
     };
 
-    public String[] slide_headings = {"Get Your Daily Health Tips", "Basic problems and their solutions", "Disease In Your Area"};
+    public String[] slide_headings = {"Get Your Daily Health Tips", "Basic problems and their solutions", "घरेलू नुस्खे"};
 
     public String[] slide_desc = {"Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.`",
             "Explore best food outlets of delhi. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.",
-            "Experience 'The Desi Swag' of delhi people. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer."};
+            "घरेलू नुस्\u200Dखों (Gharelu Nuskhe) के कोई साइड इफेक्\u200Dट नहीं होते और आप आसानी से इनका प्रयोग कर सकते हैं । सालों से अपनायी जा रही हैं घरेलू नुस्खे / होम रेमेडीज़ (Home Remedies in Hindi) के बारे में जानें। घरेलू नुस्खे / होम रेमेडीज़ का प्रयोग सिर्फ बीमारियों में ही नहीं, बल्कि अच्\u200Dछी सेहत के लिए भी किया जाता है।"};
 
 
     @Override

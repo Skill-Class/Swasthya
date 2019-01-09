@@ -39,7 +39,7 @@
         app:itemBackground="@color/colorPrimary"
         app:itemIconSize="18dp"
         app:itemTextColor="#fff"
-
+        app:itemIconTint="#fff"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
