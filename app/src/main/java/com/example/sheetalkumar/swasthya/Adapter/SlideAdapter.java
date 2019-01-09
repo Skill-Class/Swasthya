@@ -25,16 +25,16 @@ public class SlideAdapter extends PagerAdapter {
 
     //Arrays
     public int[] slide_image = {
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background
+            R.drawable.ic_undraw_loading_frh4,
+            R.drawable.ic_undraw_smiley_face_lmgm,
+            R.drawable.ic_undraw_feeling_blue_4b7q,
     };
 
-    public String[] slide_headings = {"Travel", "Explore", "Experience"};
+    public String[] slide_headings = {"Get Your Daily Health Tips", "Basic problems and their solutions", "Disease In Your Area"};
 
-    public String[] slide_desc = {"Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.",
-            "Explore best food outlets of delhi. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.",
-            "Experience 'The Desi Swag' of delhi people. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer."};
+    public String[] slide_desc = {"Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.`",
+            "Explore best food outlets of delhi. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.",
+            "Experience 'The Desi Swag' of delhi people. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer."};
 
 
     @Override

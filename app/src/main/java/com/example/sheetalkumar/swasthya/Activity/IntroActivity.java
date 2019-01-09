@@ -77,7 +77,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (mCurrentPage == 2) {
 
-                    Intent intent = new Intent(IntroActivity.this, SplashActivity.class);   // sending to the Login Activity
+                    Intent intent = new Intent(IntroActivity.this, LoginActivity.class);   // sending to the Login Activity
                     startActivity(intent);
                     finish();
                 }

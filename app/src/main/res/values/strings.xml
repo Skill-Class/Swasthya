@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Swasthya</string>
     <string name="LOGO">SWASTHYA</string>
+    <string name="dummyShortText">Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.</string>
+    <string name="terms_text">By signing up you agree to our Terms of Use, Privacy Policy and Rules.</string>
+    <string name="privacy">Before signing in make sure you agree to our Terms and Conditions and Privacy Policy.</string>
 </resources>

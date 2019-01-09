@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.SplashActivity"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/ourbg"
     tools:layout_editor_absoluteY="25dp">
+
+
 
     <TextView
         android:id="@+id/logo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="180dp"
         android:text="@string/LOGO"
         android:textColor="#fff"
         android:textSize="30sp"
@@ -31,7 +33,7 @@
         android:textSize="14sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_text" />
 
@@ -43,10 +45,28 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_background"
         android:text="Get Started"
         android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/terms_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/terms_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="@string/terms_text"
+        android:textColor="#fff"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
