@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.sheetalkumar.swasthya.R;
 
+
 public class SlideAdapter extends PagerAdapter {
 
     LayoutInflater layoutInflater;
@@ -25,9 +26,9 @@ public class SlideAdapter extends PagerAdapter {
 
     //Arrays
     public int[] slide_image = {
-            R.drawable.ic_undraw_loading_frh4,
-            R.drawable.ic_undraw_smiley_face_lmgm,
-            R.drawable.ic_undraw_feeling_blue_4b7q,
+            R.drawable.ic_undraw_workout_gcgu,
+            R.drawable.ic_undraw_super_thank_you_obwk,
+            R.drawable.ic_undraw_getting_coffee_wntr,
     };
 
     public String[] slide_headings = {"Get Your Daily Health Tips", "Basic problems and their solutions", "घरेलू नुस्खे"};
@@ -50,6 +51,7 @@ public class SlideAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+
         View view = layoutInflater.inflate(R.layout.slidelayout, container, false);
 
         ImageView slide_image_view = (ImageView) view.findViewById(R.id.img);
@@ -61,6 +63,7 @@ public class SlideAdapter extends PagerAdapter {
         //slideDesc.startAnimation(animation);
 
         slide_image_view.setImageResource(slide_image[position]);
+
         slideHeading.setText(slide_headings[position]);
         slideDesc.setText(slide_desc[position]);
 

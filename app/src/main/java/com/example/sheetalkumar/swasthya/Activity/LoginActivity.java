@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         RegisterNowText = findViewById(R.id.textView3);
-        lottieAnimationView = findViewById(R.id.lotti_animation);
+       // lottieAnimationView = findViewById(R.id.lotti_animation);
 
 
         RegisterNowText.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +35,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        lottieAnimationView.playAnimation();
+      //  lottieAnimationView.playAnimation();
     }
 }

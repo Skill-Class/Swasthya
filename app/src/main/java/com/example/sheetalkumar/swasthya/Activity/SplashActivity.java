@@ -16,6 +16,8 @@ import com.example.sheetalkumar.swasthya.R;
 public class SplashActivity extends AppCompatActivity {
 
     private Button getStartedButton;
+    private Button getSignin;
+
     private TextView logoText, dummyLogoText, termsText;
 
   //  private LottieAnimationView lottieAnimationView;
@@ -29,6 +31,8 @@ public class SplashActivity extends AppCompatActivity {
 
 
         getStartedButton = findViewById(R.id.button_getStarted);
+        getSignin = findViewById(R.id.button_getSignin);
+
         logoText = findViewById(R.id.logo_text);
         dummyLogoText = findViewById(R.id.dummy_logo_text);
         termsText = findViewById(R.id.terms_text);
@@ -53,6 +57,17 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
+
+        getSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        getSignin.startAnimation(bottomToUp);
         getStartedButton.startAnimation(bottomToUp);
         termsText.startAnimation(bottomToUp);
 

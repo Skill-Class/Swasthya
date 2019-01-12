@@ -52,6 +52,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
         sliderAdapter = new SlideAdapter(this);
+
         viewPager.setAdapter(sliderAdapter);
 
        // thankyoutext = findViewById(R.id.textView29);
