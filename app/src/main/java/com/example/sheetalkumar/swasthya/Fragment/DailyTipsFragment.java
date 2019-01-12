@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sheetalkumar.swasthya.Adapter.ItemAdapter;
 import com.example.sheetalkumar.swasthya.Adapter.OffterAdapter;
 import com.example.sheetalkumar.swasthya.R;
 
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 public class DailyTipsFragment extends Fragment {
 
     private ArrayList<Integer> OfferImages = new ArrayList<>();
+    private ArrayList<Integer> itemImages = new ArrayList<>();
+    private ArrayList<String> itemName = new ArrayList<>();
 
 
     @Override
@@ -33,6 +36,18 @@ public class DailyTipsFragment extends Fragment {
         OfferImages.add(R.drawable.pple);
         OfferImages.add(R.drawable.ppleone);
 
+        itemImages.add(R.drawable.pple);
+        itemImages.add(R.drawable.ppleone);
+        itemImages.add(R.drawable.ppletwo);
+        itemImages.add(R.drawable.pple);
+        itemImages.add(R.drawable.ppleone);
+
+
+        itemName.add("महिला स्\u200Dवास्थ्\u200Dय");
+        itemName.add("आत्मविश्वास कैसे बढाएं ");
+        itemName.add("यौन स्वास्थ्य");
+        itemName.add("ब्यूटी टिप्स");
+        itemName.add("आँखों की सुंदरता और देखभाल ");
 
 
     }
@@ -47,6 +62,14 @@ public class DailyTipsFragment extends Fragment {
         offterRecyclerView.setLayoutManager(layoutManager);
         OffterAdapter adapter = new OffterAdapter(getContext(), OfferImages);
         offterRecyclerView.setAdapter(adapter);
+
+
+
+        LinearLayoutManager layoutManagerForItems = new LinearLayoutManager(getActivity(), LinearLayoutManager. VERTICAL, false);
+        RecyclerView itemRecyclerView = rootView.findViewById(R.id.items_recyclerView);
+        itemRecyclerView.setLayoutManager(layoutManagerForItems);
+        ItemAdapter adapterforItem = new ItemAdapter(getContext(), itemImages,itemName);
+        itemRecyclerView.setAdapter(adapterforItem);
 
         return rootView;
     }
