@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
         getStartedButton = findViewById(R.id.button_getStarted);
-        getSignin = findViewById(R.id.button_getSignin);
+      //  getSignin = findViewById(R.id.button_getSignin);
 
         logoText = findViewById(R.id.logo_text);
         dummyLogoText = findViewById(R.id.dummy_logo_text);
@@ -58,16 +58,9 @@ public class SplashActivity extends AppCompatActivity {
         });
 
 
-        getSignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
-        getSignin.startAnimation(bottomToUp);
+      //  getSignin.startAnimation(bottomToUp);
         getStartedButton.startAnimation(bottomToUp);
         termsText.startAnimation(bottomToUp);
 

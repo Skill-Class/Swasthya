@@ -24,7 +24,9 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.HomeScreenActivity"></activity>
+        <activity android:name=".Activity.HomeScreenActivity" />
+        <activity android:name=".Activity.DetailsActivity"
+            android:parentActivityName=".Activity.HomeScreenActivity"></activity>
     </application>
 
 </manifest>

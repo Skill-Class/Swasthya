@@ -4,17 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="10dp">
 
 
     <ImageView
         android:id="@+id/custom_itemImages"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,12 +20,12 @@
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:paddingLeft="10dp"
         android:paddingTop="3dp"
         android:text="Punjabi Rasoi"
         android:textColor="@color/colorView"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/custom_itemImages"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,12 +34,14 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/ovo"
         android:paddingLeft="10dp"
         android:paddingTop="1dp"
-        android:text="5 Min Read."
-        android:fontFamily="@font/ovo"
+        android:text="- By Sheetal Kumar | 5 min Read."
         android:textColor="@color/colorView"
         android:textSize="12sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toEndOf="@+id/custom_itemImages"
         app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
@@ -56,7 +54,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:alpha="0.2"
         android:background="@color/colorView"
         android:paddingLeft="5dp"
@@ -66,5 +63,22 @@
         app:layout_constraintStart_toEndOf="@+id/custom_itemImages"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/ovo"
+        android:padding="10dp"
+        android:paddingTop="3dp"
+        android:text="Updated - 23 min ago."
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/item_name"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
