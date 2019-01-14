@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -18,7 +19,8 @@ public class SplashActivity extends AppCompatActivity {
     private Button getStartedButton;
     private Button getSignin;
 
-    private TextView logoText, dummyLogoText, termsText;
+    private ImageView logoimg;
+    private TextView logoText, dummyLogoText, termsText, developterText;
 
   //  private LottieAnimationView lottieAnimationView;
 
@@ -36,6 +38,10 @@ public class SplashActivity extends AppCompatActivity {
         logoText = findViewById(R.id.logo_text);
         dummyLogoText = findViewById(R.id.dummy_logo_text);
         termsText = findViewById(R.id.terms_text);
+        logoimg = (ImageView)findViewById(R.id.imageView3);
+        developterText= findViewById(R.id.textView10);
+
+
 
         // lottieAnimationView = findViewById(R.id.lotti_animation);
         // startCheckAnimation();
@@ -63,8 +69,10 @@ public class SplashActivity extends AppCompatActivity {
       //  getSignin.startAnimation(bottomToUp);
         getStartedButton.startAnimation(bottomToUp);
         termsText.startAnimation(bottomToUp);
+        developterText.startAnimation(bottomToUp);
 
         logoText.startAnimation(topToBottom);
+        logoimg.startAnimation(topToBottom);
         dummyLogoText.startAnimation(topToBottom);
 
 
