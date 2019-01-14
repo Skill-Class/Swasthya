@@ -1,12 +1,14 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.sheetalkumar.swasthya.Fragment.DailyTipsFragment;
 import com.example.sheetalkumar.swasthya.R;
@@ -14,6 +16,10 @@ import com.example.sheetalkumar.swasthya.R;
 public class DetailsActivity extends AppCompatActivity {
 
     Toolbar myToolbar;
+    private TextView descTextView, titleTextView, headingTextView;
+    private String Desc;
+    private String data;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +31,30 @@ public class DetailsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        // Get a support ActionBar corresponding to this toolbar
-       // ActionBar ab = getSupportActionBar();
 
-        // Enable the Up button
- //       ab.setDisplayHomeAsUpEnabled(true);
 
+        descTextView = findViewById(R.id.textView21);
+        titleTextView = findViewById(R.id.appCompatTextView);
+        headingTextView = findViewById(R.id.textView18);
+
+
+        // Receiving data from fragment to an activity (DailyTipsFragment -> DetailsActivity)
+
+        try {
+
+            Bundle intent = getIntent().getExtras();
+            Integer Title = intent.getInt("Title");
+            Integer Desc = intent.getInt("Desc");
+            Integer Heading = intent.getInt("Heading");
+
+            descTextView.setText(Desc);
+            titleTextView.setText(Title);
+            headingTextView.setText(Heading);
+
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
     public boolean onCreateOptionsMenu(Menu menu) {
 

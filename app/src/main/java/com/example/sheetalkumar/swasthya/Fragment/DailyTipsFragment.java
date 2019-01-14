@@ -28,6 +28,10 @@ public class DailyTipsFragment extends Fragment {
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<String> itemName = new ArrayList<>();
 
+    private ArrayList<Integer> mDesc = new ArrayList<>();
+    private ArrayList<Integer> mTitle = new ArrayList<>();
+    private ArrayList<Integer> mHeading = new ArrayList<>();
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +48,6 @@ public class DailyTipsFragment extends Fragment {
         OfferImages.add(R.drawable.pplethree);
         OfferImages.add(R.drawable.pplefour);
         OfferImages.add(R.drawable.pplefive);
-
 
 
         itemImages.add(R.drawable.ple); //1
@@ -64,13 +67,37 @@ public class DailyTipsFragment extends Fragment {
         itemName.add("स्वस्थ रहने के 20 सूत्र");
         itemName.add("स्वस्थ रहने के 20 सूत्र");
 
+        mDesc.add(R.string.desc_a);
+        mDesc.add(R.string.desc_b);
+        mDesc.add(R.string.desc_a);
+        mDesc.add(R.string.desc_a);
+        mDesc.add(R.string.desc_a);
+        mDesc.add(R.string.desc_a);
+        mDesc.add(R.string.desc_a);
 
+
+        mTitle.add(R.string.title_a);
+        mTitle.add(R.string.title_b);
+        mTitle.add(R.string.title_c);
+        mTitle.add(R.string.title_d);
+        mTitle.add(R.string.title_e);
+        mTitle.add(R.string.title_f);
+        mTitle.add(R.string.title_g);
+
+
+        mHeading.add(R.string.heading_a);
+        mHeading.add(R.string.heading_b);
+        mHeading.add(R.string.heading_c);
+        mHeading.add(R.string.heading_d);
+        mHeading.add(R.string.heading_e);
+        mHeading.add(R.string.heading_f);
+        mHeading.add(R.string.heading_g);
 
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_daily_tips, container, false);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -92,11 +119,7 @@ public class DailyTipsFragment extends Fragment {
                 offterRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-                Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
-                        Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getContext(), DetailsActivity.class);
-                startActivity(intent);
+                Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -112,8 +135,20 @@ public class DailyTipsFragment extends Fragment {
             public void onClick(View view, final int position) {
                 Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), DetailsActivity.class);
+
+
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+
+                //Sending Data from a fragment to an activity (DailyTipsFragment -> DetailsActivity)
+
+                intent.putExtra("Title", mTitle.get(position));
+                intent.putExtra("Desc", mDesc.get(position));
+                intent.putExtra("Heading", mHeading.get(position));
+
                 startActivity(intent);
+
+
+                // startActivity(intent);
             }
 
             @Override

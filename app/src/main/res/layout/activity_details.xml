@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/appCompatTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:gravity="center"
-                android:text='" स्वस्थ रहने के 20 सूत्र "'
+                android:text="@string/title_a"
                 android:textColor="@color/colorView"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -78,7 +78,7 @@
                 android:background="@color/colorFontGreen"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="दिनचर्या में थोड़ा-सा व आसान परिवर्तन आपको स्वस्थ व दीर्घायु बना सकता है। बशर्ते आप कुछ चीजों को जीवनभर के लिए अपना लें और कुछ त्याज्य चीजों को हमेशा के लिए दूर कर दें। इसके लिए अपनाइए सरल-सा 20 सूत्री जीवन। "
+                android:text="@string/heading_a"
                 android:textColor="#fff"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -96,6 +96,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:padding="16dp"
+                android:lineSpacingExtra="2dp"
                 android:text="@string/daily_tips"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.53"
@@ -134,9 +135,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:padding="14dp"
                 android:fontFamily="@font/ovo"
-                android:text="@string/daily_tips"
+                android:padding="14dp"
+                android:text="@string/desc_a"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
