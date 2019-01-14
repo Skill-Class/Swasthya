@@ -10,12 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.sheetalkumar.swasthya.Fragment.CheckMeFragment;
 import com.example.sheetalkumar.swasthya.Fragment.DailyTipsFragment;
 import com.example.sheetalkumar.swasthya.Fragment.FinDiseaseFragment;
 import com.example.sheetalkumar.swasthya.Fragment.GhareluNuksheFragment;
 import com.example.sheetalkumar.swasthya.R;
+
 
 public class HomeScreenActivity extends AppCompatActivity {
 
@@ -27,10 +29,14 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+
+
         bottomNavigationView = findViewById(R.id.navigation);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        //Show daily tips as alert
 
         loadFragment(new DailyTipsFragment());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

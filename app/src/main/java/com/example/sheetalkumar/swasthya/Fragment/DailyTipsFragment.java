@@ -13,12 +13,16 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextSwitcher;
 import android.widget.Toast;
 
 import com.example.sheetalkumar.swasthya.Activity.DetailsActivity;
 import com.example.sheetalkumar.swasthya.Adapter.ItemAdapter;
 import com.example.sheetalkumar.swasthya.Adapter.OffterAdapter;
 import com.example.sheetalkumar.swasthya.R;
+
 
 import java.util.ArrayList;
 
@@ -32,12 +36,19 @@ public class DailyTipsFragment extends Fragment {
     private ArrayList<Integer> mTitle = new ArrayList<>();
     private ArrayList<Integer> mHeading = new ArrayList<>();
 
+   // private TextSwitcher textSwitcher;
+   // int flag = 1;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getImages();
+
+
+
+
     }
 
     private void getImages() {
@@ -56,7 +67,7 @@ public class DailyTipsFragment extends Fragment {
         itemImages.add(R.drawable.plefour);
         itemImages.add(R.drawable.plefive);
         itemImages.add(R.drawable.plesix);
-        itemImages.add(R.drawable.plesix);  //7
+        itemImages.add(R.drawable.pleseven);  //7
 
 
         itemName.add("5 टिप्स सेहत के लिए"); //1
@@ -65,15 +76,15 @@ public class DailyTipsFragment extends Fragment {
         itemName.add("लम्\u200Dबा होना है? तो करिए ये योगासन");
         itemName.add("स्वस्थ रहने के नौ टिप्स");
         itemName.add("स्वस्थ रहने के 20 सूत्र");
-        itemName.add("स्वस्थ रहने के 20 सूत्र");
+        itemName.add("फिट रहना है तो अपनाएं ये छोटे-छोट टिप्\u200Dस");
 
         mDesc.add(R.string.desc_a);
         mDesc.add(R.string.desc_b);
-        mDesc.add(R.string.desc_a);
-        mDesc.add(R.string.desc_a);
-        mDesc.add(R.string.desc_a);
-        mDesc.add(R.string.desc_a);
-        mDesc.add(R.string.desc_a);
+        mDesc.add(R.string.desc_c);
+        mDesc.add(R.string.desc_d);
+        mDesc.add(R.string.desc_e);
+        mDesc.add(R.string.desc_f);
+        mDesc.add(R.string.desc_g);
 
 
         mTitle.add(R.string.title_a);
@@ -86,12 +97,12 @@ public class DailyTipsFragment extends Fragment {
 
 
         mHeading.add(R.string.heading_a);
-        mHeading.add(R.string.heading_b);
+        mHeading.add(R.string.heading_a);
         mHeading.add(R.string.heading_c);
         mHeading.add(R.string.heading_d);
-        mHeading.add(R.string.heading_e);
+        mHeading.add(R.string.heading_a);
         mHeading.add(R.string.heading_f);
-        mHeading.add(R.string.heading_g);
+        mHeading.add(R.string.heading_a);
 
 
     }
@@ -106,6 +117,22 @@ public class DailyTipsFragment extends Fragment {
         offterRecyclerView.setLayoutManager(layoutManager);
         OffterAdapter adapter = new OffterAdapter(getContext(), OfferImages);
         offterRecyclerView.setAdapter(adapter);
+
+       // textSwitcher = rootView.findViewById(R.id.textSwitcher);
+        //textSwitcher.setCurrentText("\" गुणकारी टिप्स \"");
+
+     /*   Animation textAnimationIn =  AnimationUtils.
+                loadAnimation(getContext(),   android.R.anim.fade_in);
+        textAnimationIn.setDuration(800);
+
+        Animation textAnimationOut =  AnimationUtils.
+                loadAnimation(getContext(),   android.R.anim.fade_out);
+        textAnimationOut.setDuration(800);
+
+        textSwitcher.setInAnimation(textAnimationIn);
+        textSwitcher.setOutAnimation(textAnimationOut);*/
+
+
 
 
         LinearLayoutManager layoutManagerForItems = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
