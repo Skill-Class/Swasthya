@@ -24,7 +24,7 @@
         android:paddingLeft="10dp"
         android:paddingTop="3dp"
         android:text="Punjabi Rasoi"
-        android:textColor="@color/colorView"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/textView7"
