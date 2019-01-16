@@ -1,5 +1,7 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.sheetalkumar.swasthya.Fragment.CheckMeFragment;
 import com.example.sheetalkumar.swasthya.Fragment.DailyTipsFragment;
@@ -89,7 +92,47 @@ public class HomeScreenActivity extends AppCompatActivity {
 
                 return true;
 
-            case R.id.action_favorite:
+            case R.id.action_about:
+                // User chose the "Settings" item, show the app settings UI...
+
+                final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                //  alertDialog.setContentView(R.layout.menudialog);
+                alertDialog.setTitle("Swasthya");
+                alertDialog.setIcon(R.drawable.ic_social_care_green);
+                alertDialog.setCancelable(true);
+                alertDialog.setMessage("\nToday, Ayurveda is dominated by all over the world, advises the practitioners, doctors, scientists, Ayurveda and yoga of the entire world and follow their miraculous effects.\n" +
+                        "Home remedies can be used in various everyday diseases such as fever, colds, headache, physical impairment, obesity, abdominal pain, back pain, joints and knee pain etc and it is instant relief. Think of your health, now you sit at home.\n" +
+                        "Through this app, we are trying to reach the domestic Ayurvedic prescriptions to the general public so that all people can take Ayurveda in their life and benefit from it.\n" +
+                        "\n\u2022 Prevention is better than cure. Get personal and useful health tips. Simple tips to improve your daily health or lifestyle.\n" +
+                        "\n\u2022 Here you can check of any disease after uploading an image of that part of your body which is suffered from the disease and provide details of the corresponding disease to you.\n" +
+                        "\n\u2022 What if you already know that this disease is spreading rapidly in your area. Is not it good? Of course it is good so that you can save yourself from suffering or take action accordingly.\n" +
+                        "This feature of the application provides the name of the disease that most people suffer and to prevent that illness, an expert will be sent to resolve that common disease.");
+                alertDialog.setButton(alertDialog.BUTTON_POSITIVE, "Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        alertDialog.cancel();
+                    }
+                });
+               /* alertDialog.setButton(alertDialog.BUTTON_NEGATIVE, "Not Agree", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ChatActivity.this, "Sorry. we can not allow you to post anything until you do not accept our terms and conditions.!", Toast.LENGTH_LONG).show();
+                       // Intent intent = new Intent(ChatActivity.this, MainHomeScreen.class);
+                       // startActivity(intent);
+                       // finish();
+                    }
+                });*/
+
+                alertDialog.show();
+
+                return true;
+
+            case R.id.action_logout:
+                // User chose the "Settings" item, show the app settings UI...
+
+                return true;
+
+            case R.id.action_help:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
                 return true;

@@ -8,11 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.sheetalkumar.swasthya.Adapter.PagerAdapter;
 import com.example.sheetalkumar.swasthya.R;
 
 public class DetailsGNActivity extends AppCompatActivity {
+
+    private TextView titleText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,26 @@ public class DetailsGNActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+    titleText = findViewById(R.id.title_text);
+
+
+        try {
+
+            Bundle intent = getIntent().getExtras();
+            Integer Title = intent.getInt("Title");
+           // Integer Desc = intent.getInt("Desc");
+           // Integer Heading = intent.getInt("Heading");
+
+            titleText.setText(Title);
+          //  titleTextView.setText(Title);
+           // headingTextView.setText(Heading);
+
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);

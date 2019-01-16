@@ -1,7 +1,6 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.sheetalkumar.swasthya.Fragment.DailyTipsFragment;
 import com.example.sheetalkumar.swasthya.R;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -34,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         descTextView = findViewById(R.id.textView21);
-        titleTextView = findViewById(R.id.appCompatTextView);
+        titleTextView = findViewById(R.id.title_text);
         headingTextView = findViewById(R.id.textView18);
 
 

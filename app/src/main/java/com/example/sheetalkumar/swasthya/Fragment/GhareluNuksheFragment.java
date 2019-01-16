@@ -27,7 +27,7 @@ public class GhareluNuksheFragment extends Fragment {
 
 
     private ArrayList<Integer> itemImages = new ArrayList<>();
-    private ArrayList<String> itemName = new ArrayList<>();
+    private ArrayList<Integer> itemName = new ArrayList<>();
 
 
     @Override
@@ -50,20 +50,16 @@ public class GhareluNuksheFragment extends Fragment {
         itemImages.add(R.drawable.plesix);
         itemImages.add(R.drawable.pleseven);  //7
 
-        itemName.add("5 टिप्स सेहत के लिए"); //1
-        itemName.add("स्वस्थ रहने की 10 अच्छी आदतें ");
-        itemName.add("सुपर फूड्स");
-        itemName.add("लम्\u200Dबा होना है? तो करिए ये योगासन");
-        itemName.add("स्वस्थ रहने के नौ टिप्स");
-        itemName.add("स्वस्थ रहने के 20 सूत्र");
-        itemName.add("फिट रहना है तो अपनाएं ये छोटे-छोट टिप्\u200Dस");
-        itemName.add("5 टिप्स सेहत के लिए"); //1
-        itemName.add("स्वस्थ रहने की 10 अच्छी आदतें ");
-        itemName.add("सुपर फूड्स");
-        itemName.add("लम्\u200Dबा होना है? तो करिए ये योगासन");
-        itemName.add("स्वस्थ रहने के नौ टिप्स");
-        itemName.add("स्वस्थ रहने के 20 सूत्र");
-        itemName.add("फिट रहना है तो अपनाएं ये छोटे-छोट टिप्\u200Dस");
+        itemName.add(R.string.gn_a); //1
+        itemName.add(R.string.gn_b);
+        itemName.add(R.string.gn_c);
+        itemName.add(R.string.gn_d);
+        itemName.add(R.string.gn_e);
+        itemName.add(R.string.gn_f);
+        itemName.add(R.string.gn_g);
+        itemName.add(R.string.gn_h); //1
+        itemName.add(R.string.gn_i);
+        itemName.add(R.string.gn_j);
 
     }
 
@@ -93,7 +89,7 @@ public class GhareluNuksheFragment extends Fragment {
 
                 //Sending Data from a fragment to an activity (DailyTipsFragment -> DetailsActivity)
 
-                // intent.putExtra("Title", mTitle.get(position));
+                 intent.putExtra("Title", itemName.get(position));
                 //intent.putExtra("Desc", mDesc.get(position));
                 //intent.putExtra("Heading", mHeading.get(position));
 

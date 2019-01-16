@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
 
                 android:padding="16dp"
-                android:text="@string/desc_f"
+                android:text="@string/gn_upa"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

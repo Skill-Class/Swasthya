@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/near_me"
-        android:title="DailyTips"
+        android:title="दैनिक सुझाव"
         android:icon="@drawable/ic_list"
         android:iconTint="#fff"
         android:color="#fff"
@@ -12,7 +12,7 @@
         />
     <item
         android:id="@+id/explore"
-        android:title="GhareluNukshe"
+        android:title="घरेलू नुस्खे"
         android:iconTint="#fff"
         android:color="#fff"
         android:icon="@drawable/ic_social_care"

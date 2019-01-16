@@ -21,11 +21,11 @@ public class GhareluAdapter extends RecyclerView.Adapter<GhareluAdapter.ViewHold
     //vars
     //  private ArrayList<String> mNames = new ArrayList<>();
   //  private ArrayList<Integer> ItemImages = new ArrayList<>();
-    private ArrayList<String> ItemName = new ArrayList<>();
+    private ArrayList<Integer> ItemName = new ArrayList<>();
     //private ArrayList<String> mTime = new ArrayList<>();
     private Context mContext;
 
-    public GhareluAdapter(Context context, ArrayList<String> itemname) {
+    public GhareluAdapter(Context context, ArrayList<Integer> itemname) {
         // mNames = names;
         //ItemImages = imageUrls;
         //  mTime = time;
