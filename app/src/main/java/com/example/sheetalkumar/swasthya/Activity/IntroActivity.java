@@ -88,7 +88,11 @@ public class IntroActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
                     finish();
                 }
-                viewPager.setCurrentItem(mCurrentPage + 1);         // sending back to next page from the current one
+                viewPager.setCurrentItem(mCurrentPage + 1); // sending back to next page from the current one
+
+                // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
+               // viewPager.startAnimation(animation);
+               // viewPager.startAnimation(animation);
             }
         });
 
