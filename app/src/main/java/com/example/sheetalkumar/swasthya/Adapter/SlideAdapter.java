@@ -31,6 +31,11 @@ public class SlideAdapter extends PagerAdapter {
             R.drawable.ic_undraw_getting_coffee_wntr,
     };
 
+
+
+    //Animation bottomToUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
+    //Animation topToBottom = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
+
     public String[] slide_headings = {"Get Your Daily Health Tips", "Basic problems and their solutions", "घरेलू नुस्खे"};
 
     public String[] slide_desc = {"Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.`",
@@ -58,9 +63,10 @@ public class SlideAdapter extends PagerAdapter {
         TextView slideHeading = (TextView) view.findViewById(R.id.text1);
         TextView slideDesc = (TextView) view.findViewById(R.id.text2);
 
-       // Animation animation = AnimationUtils.loadAnimation(context, R.anim.bottomtoup);
-        //slideHeading.startAnimation(animation);
-        //slideDesc.startAnimation(animation);
+
+           Animation animation = AnimationUtils.loadAnimation(context, R.anim.bottom_to_top);
+           slideHeading.startAnimation(animation);
+           slideDesc.startAnimation(animation);
 
         slide_image_view.setImageResource(slide_image[position]);
 

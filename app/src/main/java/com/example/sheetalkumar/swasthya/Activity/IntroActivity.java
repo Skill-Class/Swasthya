@@ -55,6 +55,9 @@ public class IntroActivity extends AppCompatActivity {
 
         viewPager.setAdapter(sliderAdapter);
 
+
+
+
        // thankyoutext = findViewById(R.id.textView29);
         //textView = findViewById(R.id.textView30);
       //  lovetext = findViewById(R.id.loveText);
@@ -70,6 +73,8 @@ public class IntroActivity extends AppCompatActivity {
         addDotsIndicator(0);
         viewPager.addOnPageChangeListener(viewListner);
 
+        viewPager.setPageTransformer(true,new ZoomOutPageTransformer());
+
 
 
         mNextBtn.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +85,7 @@ public class IntroActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(IntroActivity.this, LoginActivity.class);   // sending to the Login Activity
                     startActivity(intent);
+                    overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
                     finish();
                 }
                 viewPager.setCurrentItem(mCurrentPage + 1);         // sending back to next page from the current one
@@ -94,6 +100,61 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
     }
+
+    //page transform starts
+    public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
+        private static final float MIN_SCALE = 0.85f;
+        private static final float MIN_ALPHA = 0.5f;
+
+        public void transformPage(View view, float position) {
+            int pageWidth = view.getWidth();
+            int pageHeight = view.getHeight();
+
+            if (position < -1) { // [-Infinity,-1)
+                // This page is way off-screen to the left.
+                view.setAlpha(0f);
+
+            } else if (position <= 1) { // [-1,1]
+                // Modify the default slide transition to shrink the page as well
+                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+                float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+                float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+                if (position < 0) {
+                    view.setTranslationX(horzMargin - vertMargin / 2);
+                } else {
+                    view.setTranslationX(-horzMargin + vertMargin / 2);
+                }
+
+                // Scale the page down (between MIN_SCALE and 1)
+                view.setScaleX(scaleFactor);
+                view.setScaleY(scaleFactor);
+
+                // Fade the page relative to its size.
+                view.setAlpha(MIN_ALPHA +
+                        (scaleFactor - MIN_SCALE) /
+                                (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
+            } else { // (1,+Infinity]
+                // This page is way off-screen to the right.
+                view.setAlpha(0f);
+            }
+        }
+    }
+
+
+
+
+
+
+
+    // page transform ends
+
+
+
+
+
+
+
 
     // starting new function to add dots
 
@@ -163,5 +224,7 @@ public class IntroActivity extends AppCompatActivity {
 
         }
     };
+
+
 }
 
