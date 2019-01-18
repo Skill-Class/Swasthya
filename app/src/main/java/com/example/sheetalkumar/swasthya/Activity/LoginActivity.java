@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private LottieAnimationView lottieAnimationView;
-    private TextView RegisterNowText;
+    private TextView RegisterNowText, textView1,textView2;
     private Button loginButton;
 
     private ConstraintLayout constraintLayout;
@@ -38,11 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         constraintLayout = findViewById(R.id.constraintLayout);
         logoImage = findViewById(R.id.imageView);
 
+        textView1 = findViewById(R.id.textView2);
+        textView2 = findViewById(R.id.textView3);
+
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
         Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
 
         constraintLayout.startAnimation(animation);
         logoImage.startAnimation(animation1);
+        textView1.startAnimation(animation);
+        textView2.startAnimation(animation);
+
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
