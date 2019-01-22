@@ -51,14 +51,6 @@ public class DailyTipsFragment extends Fragment {
 
         getImages();
 
-
-
-
-
-
-
-
-
     }
 
     private void getImages() {
