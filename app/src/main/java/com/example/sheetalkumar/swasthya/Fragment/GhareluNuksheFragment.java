@@ -1,5 +1,6 @@
 package com.example.sheetalkumar.swasthya.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Toast;
 
 import com.example.sheetalkumar.swasthya.Activity.DetailsActivity;
@@ -28,6 +32,7 @@ public class GhareluNuksheFragment extends Fragment {
 
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<Integer> itemName = new ArrayList<>();
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -69,11 +74,26 @@ public class GhareluNuksheFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_gharelu_nukshe, container, false);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
+
+        Animation animation1 = AnimationUtils.loadAnimation(getActivity(),R.anim.left_to_right);
+
         RecyclerView offterRecyclerView = rootView.findViewById(R.id.recyclerView);
         offterRecyclerView.setLayoutManager(layoutManager);
 
+        progressDialog = new ProgressDialog(getActivity());
+
+
+
+
+        int resId = R.anim.layout_animation_fall_down;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
+        offterRecyclerView.setLayoutAnimation(animation);
+
+
+
         GhareluAdapter adapter = new GhareluAdapter(getContext(), itemName);
         offterRecyclerView.setAdapter(adapter);
+       // offterRecyclerView.startAnimation(animation1);
 
 
         offterRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
@@ -81,8 +101,14 @@ public class GhareluNuksheFragment extends Fragment {
 
             @Override
             public void onClick(View view, final int position) {
-                Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
-                        Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
+                 //       Toast.LENGTH_SHORT).show();
+
+                progressDialog.setIcon(R.drawable.ic_social_care_green);
+                progressDialog.setTitle("Loading");
+                progressDialog.setMessage("Please wait for a moment..");
+                progressDialog.show();
+
 
 
                 Intent intent = new Intent(getActivity(), DetailsGNActivity.class);

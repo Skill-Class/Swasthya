@@ -1,5 +1,6 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextView loginText;
     private Button registerButton;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -23,9 +25,17 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.button2);
         loginText = findViewById(R.id.textView3);
 
+        progressDialog = new ProgressDialog(this);
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressDialog.setIcon(R.drawable.ic_social_care_green);
+                progressDialog.setTitle("Signing up");
+                progressDialog.setMessage("Please wait for a moment..");
+                progressDialog.show();
+
                 Intent intent = new Intent(RegisterActivity.this,HomeScreenActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);

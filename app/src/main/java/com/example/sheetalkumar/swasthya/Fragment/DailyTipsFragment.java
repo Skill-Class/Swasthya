@@ -1,6 +1,7 @@
 package com.example.sheetalkumar.swasthya.Fragment;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.TextSwitcher;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sheetalkumar.swasthya.Activity.DetailsActivity;
@@ -36,15 +39,22 @@ public class DailyTipsFragment extends Fragment {
     private ArrayList<Integer> mTitle = new ArrayList<>();
     private ArrayList<Integer> mHeading = new ArrayList<>();
 
+    private ProgressDialog progressDialog;
+
    // private TextSwitcher textSwitcher;
    // int flag = 1;
-
+    private TextView textViewone;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getImages();
+
+
+
+
+
 
 
 
@@ -111,6 +121,17 @@ public class DailyTipsFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_daily_tips, container, false);
+
+
+        textViewone = rootView.findViewById(R.id.textView5);
+
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.right_to_left);
+        Animation animation1 = AnimationUtils.loadAnimation(getActivity(),R.anim.left_to_right);
+
+        textViewone.startAnimation(animation);
+
+        progressDialog = new ProgressDialog(getActivity());
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         RecyclerView offterRecyclerView = rootView.findViewById(R.id.recyclerView);
@@ -118,20 +139,11 @@ public class DailyTipsFragment extends Fragment {
         OffterAdapter adapter = new OffterAdapter(getContext(), OfferImages);
         offterRecyclerView.setAdapter(adapter);
 
-       // textSwitcher = rootView.findViewById(R.id.textSwitcher);
-        //textSwitcher.setCurrentText("\" गुणकारी टिप्स \"");
+        offterRecyclerView.startAnimation(animation);
 
-     /*   Animation textAnimationIn =  AnimationUtils.
-                loadAnimation(getContext(),   android.R.anim.fade_in);
-        textAnimationIn.setDuration(800);
-
-        Animation textAnimationOut =  AnimationUtils.
-                loadAnimation(getContext(),   android.R.anim.fade_out);
-        textAnimationOut.setDuration(800);
-
-        textSwitcher.setInAnimation(textAnimationIn);
-        textSwitcher.setOutAnimation(textAnimationOut);*/
-
+      //  int resId = R.anim.layout_animation_fall_down;
+       // LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
+       // offterRecyclerView.setLayoutAnimation(animation);
 
 
 
@@ -140,6 +152,7 @@ public class DailyTipsFragment extends Fragment {
         itemRecyclerView.setLayoutManager(layoutManagerForItems);
         ItemAdapter adapterforItem = new ItemAdapter(getContext(), itemImages, itemName);
         itemRecyclerView.setAdapter(adapterforItem);
+        itemRecyclerView.startAnimation(animation1);
 
 
         offterRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
@@ -160,11 +173,16 @@ public class DailyTipsFragment extends Fragment {
                 itemRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-                Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
-                        Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
+                //        Toast.LENGTH_SHORT).show();
 
+                progressDialog.setIcon(R.drawable.ic_social_care_green);
+                progressDialog.setTitle("Loading");
+                progressDialog.setMessage("Please wait for a moment..");
+                progressDialog.show();
 
                 Intent intent = new Intent(getActivity(), DetailsActivity.class);
+
 
                 //Sending Data from a fragment to an activity (DailyTipsFragment -> DetailsActivity)
 

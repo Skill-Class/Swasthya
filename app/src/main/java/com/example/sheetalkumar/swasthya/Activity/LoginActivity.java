@@ -1,5 +1,6 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private ConstraintLayout constraintLayout;
     private ImageView logoImage;
 
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         textView1 = findViewById(R.id.textView2);
         textView2 = findViewById(R.id.textView3);
 
+        progressDialog = new ProgressDialog(this);
+
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
         Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
 
@@ -54,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressDialog.setIcon(R.drawable.ic_social_care_green);
+                progressDialog.setTitle("Signing in");
+                progressDialog.setMessage("Please wait for a moment..");
+                progressDialog.show();
+
                 Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);    // Activity transition animation

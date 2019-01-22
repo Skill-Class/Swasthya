@@ -23,7 +23,7 @@
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_help"
-        android:title="Help"
+        android:title="Feedback"
         app:showAsAction="never"/>
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_logout"

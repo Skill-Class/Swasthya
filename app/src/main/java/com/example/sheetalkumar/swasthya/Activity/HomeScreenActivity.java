@@ -2,6 +2,8 @@ package com.example.sheetalkumar.swasthya.Activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +34,6 @@ public class HomeScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
 
 
         bottomNavigationView = findViewById(R.id.navigation);
@@ -135,6 +137,8 @@ public class HomeScreenActivity extends AppCompatActivity {
             case R.id.action_help:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
+
+                sendEmail();
                 return true;
 
             default:
@@ -151,5 +155,12 @@ public class HomeScreenActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
 
+    }
+
+    protected void sendEmail() {
+        Intent mailIntent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.parse("mailto:?subject=" + "Swasthya App feedback" + "&body=" + " " + "&to=" + "feedback@swasthya.com");
+        mailIntent.setData(data);
+        startActivity(Intent.createChooser(mailIntent, "Send mail..."));
     }
 }
