@@ -30,6 +30,10 @@ import java.util.ArrayList;
 public class GhareluNuksheFragment extends Fragment {
 
 
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<Integer> itemName = new ArrayList<>();
     private ProgressDialog progressDialog;

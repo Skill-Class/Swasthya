@@ -16,6 +16,12 @@ import com.example.sheetalkumar.swasthya.R;
 
 public class SlideAdapter extends PagerAdapter {
 
+
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
+
     LayoutInflater layoutInflater;
 
     Context context;

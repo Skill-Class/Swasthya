@@ -31,6 +31,11 @@ import java.util.ArrayList;
 
 public class DailyTipsFragment extends Fragment {
 
+
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
     private ArrayList<Integer> OfferImages = new ArrayList<>();
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<String> itemName = new ArrayList<>();

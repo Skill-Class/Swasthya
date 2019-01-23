@@ -12,6 +12,12 @@ import com.example.sheetalkumar.swasthya.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
+
     private TextView loginText;
     private Button registerButton;
     private ProgressDialog progressDialog;

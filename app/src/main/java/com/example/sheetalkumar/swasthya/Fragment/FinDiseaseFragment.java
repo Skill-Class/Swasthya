@@ -13,6 +13,10 @@ import com.example.sheetalkumar.swasthya.R;
 public class FinDiseaseFragment extends Fragment {
 
 
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

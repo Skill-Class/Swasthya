@@ -19,6 +19,11 @@ import com.example.sheetalkumar.swasthya.R;
 public class IntroActivity extends AppCompatActivity {
 
 
+/*
+    @Dev - Sheetal Kumar
+    Date - 23 Jan 2019
+ */
+
     private ViewPager viewPager;
     private LinearLayout mDotLayout;
     private TextView[] mDots;

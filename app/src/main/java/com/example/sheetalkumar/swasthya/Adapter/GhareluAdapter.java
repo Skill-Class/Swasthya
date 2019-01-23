@@ -15,6 +15,11 @@ import java.util.ArrayList;
 
 public class GhareluAdapter extends RecyclerView.Adapter<GhareluAdapter.ViewHolder> {
 
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
+
     private static final String TAG = "RecyclerViewAdapter";
     //private static final Date LayoutInflater = ;
 

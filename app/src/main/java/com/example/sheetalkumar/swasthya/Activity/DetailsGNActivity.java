@@ -15,6 +15,12 @@ import com.example.sheetalkumar.swasthya.R;
 
 public class DetailsGNActivity extends AppCompatActivity {
 
+
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
+
     private TextView titleText;
 
     @Override

@@ -11,6 +11,12 @@ import android.widget.TextView;
 
 import com.example.sheetalkumar.swasthya.R;
 
+
+/*
+    @Dev - Sheetal Kumar
+    Date - 23 Jan 2019
+ */
+
 public class DetailsActivity extends AppCompatActivity {
 
     Toolbar myToolbar;

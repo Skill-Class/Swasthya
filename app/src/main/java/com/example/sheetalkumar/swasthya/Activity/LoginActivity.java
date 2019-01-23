@@ -20,6 +20,12 @@ import com.example.sheetalkumar.swasthya.R;
 public class LoginActivity extends AppCompatActivity {
 
 
+
+    /*
+        @Dev - Sheetal Kumar
+        Date - 23 Jan 2019
+     */
+
     private LottieAnimationView lottieAnimationView;
     private TextView RegisterNowText, textView1,textView2;
     private Button loginButton;
