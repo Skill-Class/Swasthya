@@ -12,7 +12,7 @@
         />
     <item
         android:id="@+id/explore"
-        android:title="Gharelu Nushkhe"
+        android:title="Tiny Tips"
         android:iconTint="#fff"
         android:color="#fff"
         android:icon="@drawable/ic_social_care"
