@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sheetalkumar.swasthya.Model.JsonPlaceHolderAPI;
@@ -32,6 +34,7 @@ public class CheckMeFragment extends Fragment {
 
 
     private TextView textResult;
+    private ListView listView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,8 +48,11 @@ public class CheckMeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_check_me, container, false);
 
-        textResult = rootView.findViewById(R.id.text_view_json);
+       // textResult = rootView.findViewById(R.id.text_view_json);
 
+        listView = rootView.findViewById(R.id.listView);
+
+        // adding the base url.
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -60,6 +66,7 @@ public class CheckMeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
 
+                // Checking if response is null or not. server may cause 404 error.
                 if (!response.isSuccessful()) {
                     textResult.setText("Code : " + response.code());
                     return;
@@ -67,7 +74,8 @@ public class CheckMeFragment extends Fragment {
 
                 List<Post> posts = response.body();
 
-                for (Post post : posts) {
+                // getting all the post with id, userid, title and text.
+                /*for (Post post : posts) {
 
                     String content = "";
 
@@ -76,8 +84,19 @@ public class CheckMeFragment extends Fragment {
                     content += "Title" + post.getTitle() + "\n";
                     content += "Text : " + post.getText() + "\n\n";
 
+                    // using append  so that it does not override value.
                     textResult.append(content);
+                }*/
+
+                // getting only title and showing into listView
+                String[] titile_text = new String[posts.size()];
+
+                for (int i = 0; i < posts.size(); i++) {
+                    titile_text[i] = posts.get(i).getTitle();
                 }
+
+                //displaying the string array into listview
+                listView.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titile_text));
 
             }
 
