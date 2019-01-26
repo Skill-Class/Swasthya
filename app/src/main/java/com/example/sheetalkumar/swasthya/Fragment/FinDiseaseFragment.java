@@ -87,6 +87,8 @@ public class FinDiseaseFragment extends Fragment {
                 progressDialog.setTitle("Loading");
                 progressDialog.setMessage("Please wait for a moment..");
                 progressDialog.show();
+
+                // fetching the current location
                 getLocation();
             }
         });
@@ -101,11 +103,18 @@ public class FinDiseaseFragment extends Fragment {
             locationListener = new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
+
+                    //if location is fetched making dialog invisible. and button disable.
                     progressDialog.dismiss();
                     locationButton.setEnabled(false);
+
+                    // showing latitude and longitude
                     locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
                     try {
+
+                        //printing address in text
+
                         Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                         locationText.setText(locationText.getText() + "\n\nYour Current location is - " + "\n" + addresses.get(0).getAddressLine(0) + ", " +
@@ -134,11 +143,13 @@ public class FinDiseaseFragment extends Fragment {
             };
 
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, locationListener);
+
         } catch (SecurityException e) {
             e.printStackTrace();
         }
     }
 
+    // for playing lottie animation in fragment
    /* @Override
     public void onStart() {
         super.onStart();
