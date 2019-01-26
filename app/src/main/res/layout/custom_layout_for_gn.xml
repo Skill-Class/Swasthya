@@ -109,7 +109,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_social_care_green" />
+                android:src="@drawable/ic_social_care_green" />
 
         </android.support.constraint.ConstraintLayout>
 
