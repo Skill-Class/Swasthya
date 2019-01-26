@@ -119,6 +119,20 @@ public class FinDiseaseFragment extends Fragment {
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                         locationText.setText(locationText.getText() + "\n\nYour Current location is - " + "\n" + addresses.get(0).getAddressLine(0) + ", " +
                                 addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2));
+
+                        String finalLocation = addresses.get(0).getAddressLine(0);
+                        //    Toast.makeText(getActivity(), finalLocation, Toast.LENGTH_SHORT).show();
+
+                        if (finalLocation.contains(",")) {
+                            // Split it.
+                            String[] parts = finalLocation.split(",");
+                            Toast.makeText(getActivity(), parts[2], Toast.LENGTH_LONG).show();
+
+
+                        } else {
+                            throw new IllegalArgumentException("String " + finalLocation + " does not contain ,");
+                        }
+
                     } catch (Exception e) {
 
                     }

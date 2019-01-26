@@ -53,8 +53,13 @@ public class CheckMeFragment extends Fragment {
         listView = rootView.findViewById(R.id.listView);
 
         // adding the base url.
-        Retrofit retrofit = new Retrofit.Builder()
+       /* Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();*/
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.myjson.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -73,6 +78,7 @@ public class CheckMeFragment extends Fragment {
                 }
 
                 List<Post> posts = response.body();
+
 
                 // getting all the post with id, userid, title and text.
                 /*for (Post post : posts) {
