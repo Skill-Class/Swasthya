@@ -1,5 +1,6 @@
 package com.example.sheetalkumar.swasthya.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -41,6 +42,8 @@ public class FinDiseaseFragment extends Fragment {
     private Button locationButton;
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private ProgressDialog progressDialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +68,8 @@ public class FinDiseaseFragment extends Fragment {
         locationText = rootView.findViewById(R.id.locationText);
         locationButton = rootView.findViewById(R.id.getLocationBtn);
 
+        progressDialog = new ProgressDialog(getActivity());
+
 
         if (ContextCompat.checkSelfPermission(getActivity(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -78,6 +83,10 @@ public class FinDiseaseFragment extends Fragment {
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setIcon(R.drawable.ic_social_care_green);
+                progressDialog.setTitle("Loading");
+                progressDialog.setMessage("Please wait for a moment..");
+                progressDialog.show();
                 getLocation();
             }
         });
@@ -92,6 +101,8 @@ public class FinDiseaseFragment extends Fragment {
             locationListener = new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
+                    progressDialog.dismiss();
+                    locationButton.setEnabled(false);
                     locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
                     try {
@@ -111,6 +122,7 @@ public class FinDiseaseFragment extends Fragment {
 
                 @Override
                 public void onProviderEnabled(String provider) {
+                    progressDialog.dismiss();
                     Toast.makeText(getActivity(), "Please Enable GPS and Internet", Toast.LENGTH_SHORT).show();
 
                 }
