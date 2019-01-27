@@ -1,12 +1,18 @@
 package com.example.sheetalkumar.swasthya.Fragment;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -17,6 +23,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,9 +53,14 @@ public class DailyTipsFragment extends Fragment {
 
     private ProgressDialog progressDialog;
 
-   // private TextSwitcher textSwitcher;
-   // int flag = 1;
+    // private TextSwitcher textSwitcher;
+    // int flag = 1;
     private TextView textViewone;
+    private ImageView imageView;
+
+    private static final int NOTIFICATION_ID = 1;
+
+    private NotificationManager mNotificationManager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,7 +135,7 @@ public class DailyTipsFragment extends Fragment {
         textViewone = rootView.findViewById(R.id.textView5);
 
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.right_to_left);
-        Animation animation1 = AnimationUtils.loadAnimation(getActivity(),R.anim.left_to_right);
+        Animation animation1 = AnimationUtils.loadAnimation(getActivity(), R.anim.left_to_right);
 
         textViewone.startAnimation(animation);
 
@@ -132,16 +144,18 @@ public class DailyTipsFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         RecyclerView offterRecyclerView = rootView.findViewById(R.id.recyclerView);
+        imageView = rootView.findViewById(R.id.imageView2);
+
         offterRecyclerView.setLayoutManager(layoutManager);
         OffterAdapter adapter = new OffterAdapter(getContext(), OfferImages);
-        offterRecyclerView.setAdapter(adapter);
 
+
+        offterRecyclerView.setAdapter(adapter);
         offterRecyclerView.startAnimation(animation);
 
-      //  int resId = R.anim.layout_animation_fall_down;
-       // LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
-       // offterRecyclerView.setLayoutAnimation(animation);
-
+        //  int resId = R.anim.layout_animation_fall_down;
+        // LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
+        // offterRecyclerView.setLayoutAnimation(animation);
 
 
         LinearLayoutManager layoutManagerForItems = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -151,7 +165,17 @@ public class DailyTipsFragment extends Fragment {
         itemRecyclerView.setAdapter(adapterforItem);
         itemRecyclerView.startAnimation(animation1);
 
+        // push notification | check API Level - Integer.valueOf(android.os.Build.VERSION.SDK)
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Hello ", Toast.LENGTH_LONG).show();
+                showNotification("Swasthya", "Brush up on hygiene. Many people don't know how to brush their teeth properly. Improper brushing can cause as much damage to the teeth and gums as not brushing at all. Lots of people don’t brush for long enough, don’t floss and don’t see a dentist regularly. Hold your toothbrush in the same way that would hold a pencil, and brush for at least two minutes. ");
+
+
+            }
+        });
         offterRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
                 offterRecyclerView, new ClickListener() {
             @Override
@@ -170,7 +194,7 @@ public class DailyTipsFragment extends Fragment {
                 itemRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-              //  Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
+                //  Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
                 //        Toast.LENGTH_SHORT).show();
 
                 progressDialog.setIcon(R.drawable.ic_social_care_green);
@@ -201,6 +225,33 @@ public class DailyTipsFragment extends Fragment {
         }));
 
         return rootView;
+    }
+
+
+    // Create the NotificationChannel, but only on API 26+ because
+    // the NotificationChannel class is new and not in the support library
+    void showNotification(String title, String content) {
+        NotificationManager mNotificationManager =
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("default",
+                    "YOUR_CHANNEL_NAME",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("YOUR_NOTIFICATION_CHANNEL_DISCRIPTION");
+            mNotificationManager.createNotificationChannel(channel);
+        }
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(), "default")
+                .setSmallIcon(R.mipmap.ic_launcher) // notification icon
+                .setContentTitle(title) // title for notification
+                .setContentText(content)// message for notification
+                // .setSound(alarmSound) // set alarm sound for notification
+                .setStyle(new NotificationCompat.BigTextStyle()) // full text of notification
+                .setAutoCancel(true); // clear notification after click
+        // Intent intent = new Intent(getContext(), _.class);
+        //PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //mBuilder.setContentIntent(pi);
+        mNotificationManager.notify(0, mBuilder.build());
+
     }
 
     private void addRecyclerTouchListner(RecyclerView recyclerView) {
@@ -260,7 +311,6 @@ public class DailyTipsFragment extends Fragment {
 
         }
     }
-
 }
 
 
