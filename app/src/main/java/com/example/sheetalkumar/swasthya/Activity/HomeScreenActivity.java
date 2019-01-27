@@ -159,7 +159,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     protected void sendEmail() {
         Intent mailIntent = new Intent(Intent.ACTION_VIEW);
-        Uri data = Uri.parse("mailto:?subject=" + "Swasthya App feedback" + "&body=" + " " + "&to=" + "feedback@swasthya.com");
+        Uri data = Uri.parse("mailto:?subject=" + "Swasthya App feedback" + "&body=" + " " + "&to=" + "feedback.swasthya@gmail.com");
         mailIntent.setData(data);
         startActivity(Intent.createChooser(mailIntent, "Send mail..."));
     }
