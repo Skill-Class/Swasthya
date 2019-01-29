@@ -8,8 +8,8 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -17,20 +17,23 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+
+import com.example.sheetalkumar.swasthya.Model.places;
 import com.example.sheetalkumar.swasthya.R;
-import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class FinDiseaseFragment extends Fragment {
 
@@ -46,6 +49,7 @@ public class FinDiseaseFragment extends Fragment {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private ProgressDialog progressDialog;
+    private TextView texttwo;
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase mdatabase;
@@ -74,6 +78,7 @@ public class FinDiseaseFragment extends Fragment {
 
         locationText = rootView.findViewById(R.id.locationText);
         locationButton = rootView.findViewById(R.id.getLocationBtn);
+        texttwo = rootView.findViewById(R.id.textView11);
 
         progressDialog = new ProgressDialog(getActivity());
 
@@ -101,13 +106,31 @@ public class FinDiseaseFragment extends Fragment {
             }
         });
 
-      //  FirebaseApp.initializeApp(getContext());
-       //  FirebaseDatabase database = FirebaseDatabase.getInstance();
-        // DatabaseReference myRef = database.getReference("message");
+        //  FirebaseApp.initializeApp(getContext());
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Places").child("malka ganj");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                places data = dataSnapshot.getValue(places.class);
+                String data1 = data.getDengue();
+                String data2 = data.getMaleriya();
+                String data3 = data.getFever();
+
+                // String value = dataSnapshot.getValue(String.class);
+                texttwo.setText("Location : Malka Ganj\n\n" + "Maleriya - " + data1 + "%" + "\n" + "Dengue - " + data2 + "%" + "\n" + "Fever - " + data3 + "%" + "\n");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         // myRef.setValue("bye, World!");
-
-
 
 
         return rootView;
