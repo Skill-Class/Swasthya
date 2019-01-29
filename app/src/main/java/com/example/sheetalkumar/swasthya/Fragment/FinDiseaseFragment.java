@@ -102,10 +102,10 @@ public class FinDiseaseFragment extends Fragment {
         });
 
       //  FirebaseApp.initializeApp(getContext());
-         FirebaseDatabase database = FirebaseDatabase.getInstance();
-         DatabaseReference myRef = database.getReference("message");
+       //  FirebaseDatabase database = FirebaseDatabase.getInstance();
+        // DatabaseReference myRef = database.getReference("message");
 
-         myRef.setValue("bye, World!");
+        // myRef.setValue("bye, World!");
 
 
 

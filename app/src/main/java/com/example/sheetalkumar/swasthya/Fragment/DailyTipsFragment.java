@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -172,7 +173,7 @@ public class DailyTipsFragment extends Fragment {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        DatabaseReference myRef = database.getReference("Daily Notification");
 
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -323,6 +324,7 @@ public class DailyTipsFragment extends Fragment {
                 .setSmallIcon(R.mipmap.ic_launcher) // notification icon
                 .setContentTitle(title) // title for notification
                 .setContentText(content)// message for notification
+                .setColor(getResources().getColor(R.color.colorPrimaryDark))
                 // .setSound(alarmSound) // set alarm sound for notification
                 .setStyle(new NotificationCompat.BigTextStyle()) // full text of notification
                 .setAutoCancel(true); // clear notification after click
