@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -32,6 +33,11 @@ import com.example.sheetalkumar.swasthya.Activity.DetailsActivity;
 import com.example.sheetalkumar.swasthya.Adapter.ItemAdapter;
 import com.example.sheetalkumar.swasthya.Adapter.OffterAdapter;
 import com.example.sheetalkumar.swasthya.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -57,6 +63,7 @@ public class DailyTipsFragment extends Fragment {
     // int flag = 1;
     private TextView textViewone;
     private ImageView imageView;
+    public String value=" ";
 
     private static final int NOTIFICATION_ID = 1;
 
@@ -158,6 +165,39 @@ public class DailyTipsFragment extends Fragment {
         // offterRecyclerView.setLayoutAnimation(animation);
 
 
+
+
+        /* FIREBASE NOTIFICATION */
+
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                final String value = dataSnapshot.getValue(String.class);
+                showNotification("Team Swasthya",value);
+                //
+                //  final String notidata =returndata(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        //  FirebaseApp.initializeApp(getContext());
+
+
+
+
         LinearLayoutManager layoutManagerForItems = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         RecyclerView itemRecyclerView = rootView.findViewById(R.id.items_recyclerView);
         itemRecyclerView.setLayoutManager(layoutManagerForItems);
@@ -167,17 +207,46 @@ public class DailyTipsFragment extends Fragment {
 
         // push notification | check API Level - Integer.valueOf(android.os.Build.VERSION.SDK)
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+      /*  imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Hello ", Toast.LENGTH_LONG).show();
-                showNotification("Swasthya", "Brush up on hygiene. Many people don't know how to brush their teeth properly. Improper brushing can cause as much damage to the teeth and gums as not brushing at all. Lots of people don’t brush for long enough, don’t floss and don’t see a dentist regularly. Hold your toothbrush in the same way that would hold a pencil, and brush for at least two minutes. ");
+                //Toast.makeText(getActivity(), "Hello ", Toast.LENGTH_LONG).show();
+
+                // Read notification from the firebase  database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+
+
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        final String value = dataSnapshot.getValue(String.class);
+                        showNotification("Team Swasthya",value);
+                       //
+                     //  final String notidata =returndata(value);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        // Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+
+                //Toast.makeText(getActivity(),notidata,Toast.LENGTH_LONG).show();
+
+               // showNotification("Swasthya", "hihi");
 
 
             }
         });
+        */
+
         offterRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
                 offterRecyclerView, new ClickListener() {
+
             @Override
             public void onClick(View view, final int position) {
                 Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position, Toast.LENGTH_SHORT).show();
@@ -190,8 +259,10 @@ public class DailyTipsFragment extends Fragment {
             }
         }));
 
+
         itemRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
                 itemRecyclerView, new ClickListener() {
+
             @Override
             public void onClick(View view, final int position) {
                 //  Toast.makeText(getActivity(), "Showing Position  (Single Press) : " + position,
@@ -227,12 +298,19 @@ public class DailyTipsFragment extends Fragment {
         return rootView;
     }
 
+    private String returndata(String value) {
+        //Toast.makeText(getActivity(),value,Toast.LENGTH_LONG).show();
+        return String.valueOf(value);
+        //showNotification("hi",value);
+    }
+
 
     // Create the NotificationChannel, but only on API 26+ because
     // the NotificationChannel class is new and not in the support library
     void showNotification(String title, String content) {
         NotificationManager mNotificationManager =
                 (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("default",
                     "YOUR_CHANNEL_NAME",
@@ -240,6 +318,7 @@ public class DailyTipsFragment extends Fragment {
             channel.setDescription("YOUR_NOTIFICATION_CHANNEL_DISCRIPTION");
             mNotificationManager.createNotificationChannel(channel);
         }
+
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(), "default")
                 .setSmallIcon(R.mipmap.ic_launcher) // notification icon
                 .setContentTitle(title) // title for notification
@@ -247,9 +326,11 @@ public class DailyTipsFragment extends Fragment {
                 // .setSound(alarmSound) // set alarm sound for notification
                 .setStyle(new NotificationCompat.BigTextStyle()) // full text of notification
                 .setAutoCancel(true); // clear notification after click
+
         // Intent intent = new Intent(getContext(), _.class);
         //PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         //mBuilder.setContentIntent(pi);
+
         mNotificationManager.notify(0, mBuilder.build());
 
     }

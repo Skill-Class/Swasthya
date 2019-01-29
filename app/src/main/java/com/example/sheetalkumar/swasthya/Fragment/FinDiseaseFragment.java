@@ -25,6 +25,9 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.sheetalkumar.swasthya.R;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 import java.util.Locale;
@@ -44,12 +47,16 @@ public class FinDiseaseFragment extends Fragment {
     private LocationListener locationListener;
     private ProgressDialog progressDialog;
 
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase mdatabase;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //  getImages();
+
     }
 
     @Override
@@ -90,8 +97,17 @@ public class FinDiseaseFragment extends Fragment {
 
                 // fetching the current location
                 getLocation();
+
             }
         });
+
+      //  FirebaseApp.initializeApp(getContext());
+         FirebaseDatabase database = FirebaseDatabase.getInstance();
+         DatabaseReference myRef = database.getReference("message");
+
+         myRef.setValue("bye, World!");
+
+
 
 
         return rootView;

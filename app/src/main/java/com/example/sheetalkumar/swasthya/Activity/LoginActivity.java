@@ -1,6 +1,7 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.sheetalkumar.swasthya.R;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,8 +31,10 @@ public class LoginActivity extends AppCompatActivity {
      */
 
     private LottieAnimationView lottieAnimationView;
-    private TextView RegisterNowText, textView1,textView2;
+    private TextView RegisterNowText, textView1, textView2;
     private Button loginButton;
+
+    private  Context context;
 
     private ConstraintLayout constraintLayout;
     private ImageView logoImage;
@@ -60,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         textView2.startAnimation(animation);
 
 
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +74,13 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setTitle("Signing in");
                 progressDialog.setMessage("Please wait for a moment..");
                 progressDialog.show();
+
+                // Write a message to the database
+               // FirebaseApp.initializeApp(context);
+               // FirebaseDatabase database = FirebaseDatabase.getInstance();
+               // DatabaseReference myRef = database.getReference("message");
+
+               // myRef.setValue("Hello, World!");
 
                 Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
                 startActivity(intent);
@@ -87,6 +99,11 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
         //  lottieAnimationView.playAnimation();
     }
+
+
+
 }
