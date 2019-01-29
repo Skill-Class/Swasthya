@@ -50,6 +50,7 @@ public class FinDiseaseFragment extends Fragment {
     private LocationListener locationListener;
     private ProgressDialog progressDialog;
     private TextView texttwo;
+    private String[] parts;
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase mdatabase;
@@ -106,37 +107,15 @@ public class FinDiseaseFragment extends Fragment {
             }
         });
 
-        //  FirebaseApp.initializeApp(getContext());
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Places").child("malka ganj");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                places data = dataSnapshot.getValue(places.class);
-                String data1 = data.getDengue();
-                String data2 = data.getMaleriya();
-                String data3 = data.getFever();
-
-                // String value = dataSnapshot.getValue(String.class);
-                texttwo.setText("Location : Malka Ganj\n\n" + "Maleriya - " + data1 + "%" + "\n" + "Dengue - " + data2 + "%" + "\n" + "Fever - " + data3 + "%" + "\n");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-        // myRef.setValue("bye, World!");
-
-
         return rootView;
     }
 
+
+
     private void getLocation() {
+
+        String []parts;
+
         try {
             locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
             locationListener = new LocationListener() {
@@ -164,17 +143,19 @@ public class FinDiseaseFragment extends Fragment {
 
                         if (finalLocation.contains(",")) {
                             // Split it.
-                            String[] parts = finalLocation.split(",");
-                            Toast.makeText(getActivity(), parts[2], Toast.LENGTH_LONG).show();
-
-
+                            //parts[2] = "";
+                            final String[] parts = finalLocation.split(",");
+                            // Toast.makeText(getActivity(), parts[2], Toast.LENGTH_LONG).show();
+                            // currentLocation(parts[2]);
                         } else {
                             throw new IllegalArgumentException("String " + finalLocation + " does not contain ,");
                         }
 
-                    } catch (Exception e) {
 
+                    } catch (Exception e) {
                     }
+                    // not working here.
+                    reatTimeData();
                 }
 
                 @Override
@@ -201,6 +182,39 @@ public class FinDiseaseFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
+
+
+    private void reatTimeData() {
+
+
+
+        //  FirebaseApp.initializeApp(getContext());
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Places").child("malka ganj");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                places data = dataSnapshot.getValue(places.class);
+                String data1 = data.getDengue();
+                String data2 = data.getMaleriya();
+                String data3 = data.getFever();
+
+                // String currentlocation = currentLocation();
+                // String value = dataSnapshot.getValue(String.class);
+                texttwo.setText("\n Location : Malka Ganj\n\n" + "Maleriya - " + data1 + "%" + "\n" + "Dengue - " + data2 + "%" + "\n" + "Fever - " + data3 + "%" + "\n");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
 
     // for playing lottie animation in fragment
    /* @Override
