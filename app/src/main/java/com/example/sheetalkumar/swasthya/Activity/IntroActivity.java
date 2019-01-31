@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class IntroActivity extends AppCompatActivity {
     private TextView[] mDots;
     public TextView textViewLang;
     public TextView h;
-    public TextView thankyoutext,textView,lovetext;
+    public TextView thankyoutext, textView, lovetext;
 
 
     public TextView e;
@@ -48,8 +49,6 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
 
-
-
         viewPager = findViewById(R.id.viewPager);
         mDotLayout = findViewById(R.id.dotsLayout);
         mNextBtn = findViewById(R.id.nextBtn);
@@ -61,25 +60,22 @@ public class IntroActivity extends AppCompatActivity {
         viewPager.setAdapter(sliderAdapter);
 
 
-
-
-       // thankyoutext = findViewById(R.id.textView29);
+        // thankyoutext = findViewById(R.id.textView29);
         //textView = findViewById(R.id.textView30);
-      //  lovetext = findViewById(R.id.loveText);
+        //  lovetext = findViewById(R.id.loveText);
 
 
-       // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.movefromleft);
-       // Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.movesearch);
+        // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.movefromleft);
+        // Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.movesearch);
 
-       // thankyoutext.startAnimation(animation);
-       // textView.startAnimation(animation);
+        // thankyoutext.startAnimation(animation);
+        // textView.startAnimation(animation);
 //        lovetext.startAnimation(animation1);
 
         addDotsIndicator(0);
         viewPager.addOnPageChangeListener(viewListner);
 
-        viewPager.setPageTransformer(true,new ZoomOutPageTransformer());
-
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
 
         mNextBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,9 +91,10 @@ public class IntroActivity extends AppCompatActivity {
                 }
                 viewPager.setCurrentItem(mCurrentPage + 1); // sending back to next page from the current one
 
-                // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
-               // viewPager.startAnimation(animation);
-               // viewPager.startAnimation(animation);
+
+                //   Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
+                //  viewPager.startAnimation(animation);
+                // viewPager.startAnimation(animation);
             }
         });
 
@@ -119,7 +116,21 @@ public class IntroActivity extends AppCompatActivity {
             int pageWidth = view.getWidth();
             int pageHeight = view.getHeight();
 
-            if (position < -1) { // [-Infinity,-1)
+
+            if (position < 3) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.left_to_right_slide_adapter);
+                Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.right_to_left_slide_adapter);
+                TextView desc = view.findViewById(R.id.text2);
+                TextView title = view.findViewById(R.id.text1);
+                title.startAnimation(animation1);
+                desc.startAnimation(animation);
+
+
+            }
+
+        }
+
+          /*  if (position < -1) { // [-Infinity,-1)
                 // This page is way off-screen to the left.
                 view.setAlpha(0f);
 
@@ -130,8 +141,16 @@ public class IntroActivity extends AppCompatActivity {
                 float horzMargin = pageWidth * (1 - scaleFactor) / 2;
                 if (position < 0) {
                     view.setTranslationX(horzMargin - vertMargin / 2);
+
+                   // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
+                   // ImageView img1= view.findViewById(R.id.img);
+                    //img1.startAnimation(animation);
+
                 } else {
                     view.setTranslationX(-horzMargin + vertMargin / 2);
+                  //  Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
+                   // ImageView img1= view.findViewById(R.id.img);
+                   // img1.startAnimation(animation);
                 }
 
                 // Scale the page down (between MIN_SCALE and 1)
@@ -147,22 +166,11 @@ public class IntroActivity extends AppCompatActivity {
                 // This page is way off-screen to the right.
                 view.setAlpha(0f);
             }
-        }
+        }*/
     }
 
 
-
-
-
-
-
     // page transform ends
-
-
-
-
-
-
 
 
     // starting new function to add dots
@@ -174,7 +182,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // Adding All Dots on the MainScreen
         for (int i = 0; i < mDots.length; i++) {
-            mDots[i] = new TextView(this);
+            mDots[i] = new TextView(IntroActivity.this);
             mDots[i].setText(Html.fromHtml("&#8226;"));
             mDots[i].setTextSize(35);
             mDots[i].setTextColor(getResources().getColor(R.color.colorAccent));
@@ -206,7 +214,7 @@ public class IntroActivity extends AppCompatActivity {
                 mPreBtn.setEnabled(false);
                 mPreBtn.setVisibility(View.INVISIBLE);
 
-               // mNextBtn.setText("Next");
+                // mNextBtn.setText("Next");
                 mPreBtn.setText("");
 
 
@@ -215,7 +223,7 @@ public class IntroActivity extends AppCompatActivity {
                 mPreBtn.setEnabled(true);
                 mPreBtn.setVisibility(View.VISIBLE);
 
-              //  mNextBtn.setText("Let's Start");
+                //  mNextBtn.setText("Let's Start");
                 mPreBtn.setText("Back");
 
             } else {

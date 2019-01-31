@@ -69,9 +69,10 @@ public class SlideAdapter extends PagerAdapter {
         TextView slideHeading = (TextView) view.findViewById(R.id.text1);
         TextView slideDesc = (TextView) view.findViewById(R.id.text2);
 
-           Animation animation = AnimationUtils.loadAnimation(context, R.anim.bottom_to_top);
-           slideHeading.startAnimation(animation);
-           slideDesc.startAnimation(animation);
+
+          // Animation animation = AnimationUtils.loadAnimation(context, R.anim.bottom_to_top);
+          // slideHeading.startAnimation(animation);
+          // slideDesc.startAnimation(animation);
 
         slide_image_view.setImageResource(slide_image[position]);
 
