@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import com.example.sheetalkumar.swasthya.Model.JsonPlaceHolderAPI;
+import com.example.sheetalkumar.swasthya.Model.Post;
 import com.example.sheetalkumar.swasthya.Model.places;
 import com.example.sheetalkumar.swasthya.R;
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +36,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FinDiseaseFragment extends Fragment {
 
@@ -54,6 +62,8 @@ public class FinDiseaseFragment extends Fragment {
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase mdatabase;
+    public String mydata = "";
+    public String jsondata = "";
 
 
     @Override
@@ -65,7 +75,7 @@ public class FinDiseaseFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_fin_disease, container, false);
 
@@ -107,14 +117,80 @@ public class FinDiseaseFragment extends Fragment {
             }
         });
 
+       /* Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();*/
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.myjson.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        JsonPlaceHolderAPI jsonPlaceHolderAPI = retrofit.create(JsonPlaceHolderAPI.class);
+
+        Call<List<Post>> call = jsonPlaceHolderAPI.getPosts();
+
+
+        call.enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+
+                // Checking if response is null or not. server may cause 404 error.
+                if (!response.isSuccessful()) {
+                    // textResult.setText("Code : " + response.code());
+                    return;
+                }
+
+                List<Post> posts = response.body();
+
+
+                // getting all the post with id, userid, title and text.
+                for (Post post : posts) {
+
+                    String content = "";
+
+                    content += "ID:" + post.getId() + "\n";
+                    content += "UserId:" + post.getUserId() + "\n";
+                    content += "Title" + post.getTitle() + "\n";
+                    content += "Text : " + post.getText() + "\n\n";
+
+                    // using append  so that it does not override value.
+                    // textResult.append(content);
+                }
+
+                // getting only title and showing into listView
+                String[] titile_text = new String[posts.size()];
+
+                for (int i = 0; i < posts.size(); i++) {
+                    titile_text[i] = posts.get(i).getTitle();
+                }
+
+                //Toast.makeText(getActivity(),posts.get(0).getTitle(),Toast.LENGTH_LONG).show();
+                // Toast.makeText(getActivity(),mydata,Toast.LENGTH_LONG).show();
+
+                jsondata = posts.get(0).getTitle();
+
+                //displaying the string array into listview
+                // listView.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titile_text));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+                //textResult.setText(t.getMessage());
+
+            }
+        });
+
         return rootView;
     }
 
 
-
     private void getLocation() {
 
-        String []parts;
+        final String[] parts;
 
         try {
             locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -145,6 +221,7 @@ public class FinDiseaseFragment extends Fragment {
                             // Split it.
                             //parts[2] = "";
                             final String[] parts = finalLocation.split(",");
+                            mydata = parts[2];
                             // Toast.makeText(getActivity(), parts[2], Toast.LENGTH_LONG).show();
                             // currentLocation(parts[2]);
                         } else {
@@ -155,7 +232,8 @@ public class FinDiseaseFragment extends Fragment {
                     } catch (Exception e) {
                     }
                     // not working here.
-                    reatTimeData();
+                    reatTimeData(mydata);
+                    // Toast.makeText(getActivity(),mydata,Toast.LENGTH_LONG).show();
                 }
 
                 @Override
@@ -184,14 +262,26 @@ public class FinDiseaseFragment extends Fragment {
     }
 
 
+    private void reatTimeData(String mydata) {
 
-    private void reatTimeData() {
-
-
+        // String currentData =
 
         //  FirebaseApp.initializeApp(getContext());
+        Toast.makeText(getActivity(), mydata + "\n" + jsondata, Toast.LENGTH_LONG).show();
+          //  String data1 = jsondata;
+
+/*        if(mydata.equals(jsondata))
+        {
+            Toast.makeText(getActivity(), "success", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(getActivity(), "fail", Toast.LENGTH_LONG).show();
+        }
+*/
+
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Places").child("malka ganj");
+        // Toast.makeText(getActivity(),mydata,Toast.LENGTH_LONG).show();
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -205,6 +295,7 @@ public class FinDiseaseFragment extends Fragment {
                 // String currentlocation = currentLocation();
                 // String value = dataSnapshot.getValue(String.class);
                 texttwo.setText("\n Location : Malka Ganj\n\n" + "Maleriya - " + data1 + "%" + "\n" + "Dengue - " + data2 + "%" + "\n" + "Fever - " + data3 + "%" + "\n");
+                // Toast.makeText(getActivity(),mydata,Toast.LENGTH_LONG).show();
             }
 
             @Override
