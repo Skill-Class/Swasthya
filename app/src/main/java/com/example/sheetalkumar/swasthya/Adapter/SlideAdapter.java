@@ -35,6 +35,7 @@ public class SlideAdapter extends PagerAdapter {
             R.drawable.ic_undraw_workout_gcgu,
             R.drawable.ic_undraw_super_thank_you_obwk,
             R.drawable.ic_undraw_getting_coffee_wntr,
+            R.drawable.ic_undraw_workout_gcgu
     };
 
 
@@ -42,11 +43,12 @@ public class SlideAdapter extends PagerAdapter {
     //Animation bottomToUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
     //Animation topToBottom = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
 
-    public String[] slide_headings = {"Get Your Daily Health Tips", "Basic problems and their solutions", "घरेलू नुस्खे"};
+    public String[] slide_headings = {"Home remedies", "Read Health Tips", "Check Me","Find Disease in Your Area"};
 
-    public String[] slide_desc = {"Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.`",
-            "Explore best food outlets of delhi. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.Travel delhi like never before. Although there are shaded areas in the complex but it is always good to carry sunscreen or sunglasses especially during summer.",
-            "घरेलू नुस्\u200Dखों (Gharelu Nuskhe) के कोई साइड इफेक्\u200Dट नहीं होते और आप आसानी से इनका प्रयोग कर सकते हैं । सालों से अपनायी जा रही हैं घरेलू नुस्खे / होम रेमेडीज़ (Home Remedies in Hindi) के बारे में जानें। घरेलू नुस्खे / होम रेमेडीज़ का प्रयोग सिर्फ बीमारियों में ही नहीं, बल्कि अच्\u200Dछी सेहत के लिए भी किया जाता है।"};
+    public String[] slide_desc = {"Today, Ayurveda is dominated by all over the world, advises the practitioners, doctors, scientists, Ayurveda and yoga of the entire world and follow their miraculous effects. Home remedies can be used in various everyday diseases such as fever, colds, headache, physical impairment, obesity, abdominal pain, back pain, joints and knee pain etc and it is instant relief. Think of your health, now you sit at home. Through this app, we are trying to reach the domestic Ayurvedic prescriptions to the general public so that all people can take Ayurveda in their life and benefit from it. ",
+            "Prevention is better than cure. Get personal & useful health tips. Simple tips to improve your daily health or lifestyle.",
+            "Here you can check of any disease after uploading an image of that part of your body which is suffered from the disease and provide details of the corresponding disease to you.",
+           " What if you already know that this disease is spreading rapidly in your area. Is not it good? Of course it is good so that you can save yourself from suffering or take action accordingly. This feature of the application provides the name of the disease that most people suffer and to prevent that illness, an expert will be sent to resolve that common disease."};
 
 
     @Override

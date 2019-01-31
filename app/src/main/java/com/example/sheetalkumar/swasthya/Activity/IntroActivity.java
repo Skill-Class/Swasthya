@@ -116,11 +116,13 @@ public class IntroActivity extends AppCompatActivity {
             int pageWidth = view.getWidth();
             int pageHeight = view.getHeight();
 
+            TextView desc = view.findViewById(R.id.text2);
 
-            if (position < 3) {
+
+            if (position < desc.length()) {
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.left_to_right_slide_adapter);
                 Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.right_to_left_slide_adapter);
-                TextView desc = view.findViewById(R.id.text2);
+
                 TextView title = view.findViewById(R.id.text1);
                 title.startAnimation(animation1);
                 desc.startAnimation(animation);
@@ -177,7 +179,7 @@ public class IntroActivity extends AppCompatActivity {
 
     public void addDotsIndicator(int j) {
 
-        mDots = new TextView[3];
+        mDots = new TextView[4];
         mDotLayout.removeAllViews();     // removing multiples dots
 
         // Adding All Dots on the MainScreen
