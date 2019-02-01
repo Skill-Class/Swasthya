@@ -82,7 +82,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (mCurrentPage == 2) {
+                if (mCurrentPage == 3) {
 
                     Intent intent = new Intent(IntroActivity.this, LoginActivity.class);   // sending to the Login Activity
                     startActivity(intent);
