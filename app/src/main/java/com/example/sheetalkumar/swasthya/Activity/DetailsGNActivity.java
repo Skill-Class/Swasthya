@@ -17,9 +17,9 @@ import com.example.sheetalkumar.swasthya.R;
 /**
  * @Author - Sheetal Kumar
  * -------------------------------------
- * In App - Splash Activity
+ * In App - DetailsGhreluNuskheActivity
  * Attached adapter - None
- * Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
+ * Objective -  To show the details about "Gharelu upaaye and lakshan"
  * Todo - nothing
  * Status - complete
  * -------------------------------------

@@ -15,9 +15,9 @@ import com.example.sheetalkumar.swasthya.R;
 /**
  * @Author - Sheetal Kumar
  * -------------------------------------
- * In App - Splash Activity
+ * In App - DetailsActivity
  * Attached adapter - None
- * Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
+ * Objective -  Show details about particular tips when user clicks on recycler view in DailyTips Fragment.
  * Todo - nothing
  * Status - complete
  * -------------------------------------

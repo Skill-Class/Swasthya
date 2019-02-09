@@ -14,11 +14,11 @@ import com.example.sheetalkumar.swasthya.R;
 /**
  * @Author - Sheetal Kumar
  * -------------------------------------
- * In App - Splash Activity
+ * In App - Register Activity
  * Attached adapter - None
- * Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
- * Todo - nothing
- * Status - complete
+ * Objective -  Allow user to register
+ * Todo - static data to dynamic data. 2. firebase authentication
+ * Status - incomplete
  * -------------------------------------
  */
 

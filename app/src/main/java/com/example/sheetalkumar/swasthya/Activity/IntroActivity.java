@@ -22,7 +22,7 @@ import com.example.sheetalkumar.swasthya.R;
  * @Author - Sheetal Kumar
  * -------------------------------------
  * In App - Intro Activity
- * Attached adapter - None
+ * Attached adapter - Slide Adapter
  * Objective -  To show intro screen with slide adapter
  * Todo - nothing
  * Status - complete

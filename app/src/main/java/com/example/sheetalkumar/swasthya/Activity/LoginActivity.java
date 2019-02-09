@@ -23,15 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
-      @Author - Sheetal Kumar
-      -------------------------------------
-      In App - Splash Activity
-      Attached adapter - None
-      Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
-      Todo - nothing
-      Status - complete
-      -------------------------------------
-
+ * @Author - Sheetal Kumar
+ * -------------------------------------
+ * In App - Login Activity
+ * Attached adapter - None
+ * Objective -  Allow user to login in this app
+ * Todo - Firebase Authentication
+ * Status - incomplete
+ * -------------------------------------
  */
 
 public class LoginActivity extends AppCompatActivity {
@@ -57,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
          * Add adapters
          */
         AddAnimationToViews();
-
 
 
         // Sending user to home screen after login button clicked

@@ -25,9 +25,21 @@ import com.example.sheetalkumar.swasthya.Fragment.GhareluNuksheFragment;
 import com.example.sheetalkumar.swasthya.R;
 
 
+/**
+ * @Author - Sheetal Kumar
+ * -------------------------------------
+ * In App - HomeScreen (DailyTips Fragment is attached by default)
+ * Attached adapter - None
+ * Objective -  Show details about particular tips when user clicks on recycler view in DailyTips Fragment.
+ * Todo - nothing
+ * Status - complete
+ * -------------------------------------
+ */
+
 public class HomeScreenActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    private Toolbar myToolbar;
 
 
     @Override
@@ -35,53 +47,76 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        /**
+         **
+         * Connecting all XML views to java file using findViewById
+         */
+        AddXMLToJava();
 
 
+        /**
+         **
+         * Load Fragments on home screen
+         */
+        LoadFragmentToHomeScreen();
 
-        bottomNavigationView = findViewById(R.id.navigation);
+    }
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+    private void LoadFragmentToHomeScreen() {
 
-        //Show daily tips as alert
+        // Loading DailyTips Fragment to home screen
+        // At first when user will come to this screen he/she will see DailyTips Screen
 
         loadFragment(new DailyTipsFragment());
+
+        //Bottom navigation option that allows user to switch between fragments.
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
+
                 switch (menuItem.getItemId()) {
+
+                         // Showing DailyTips Fragment when clicked.
                     case R.id.near_me:
                         fragment = new DailyTipsFragment();
                         loadFragment(fragment);
-                        //                    Toast.makeText(MainActivity.this, "Near Me", Toast.LENGTH_LONG).show();
                         return true;
+
+                         // Showing GhareluNuskhe Fragment when clicked.
                     case R.id.explore:
-                        //                  Toast.makeText(MainActivity.this, "Explore", Toast.LENGTH_LONG).show();
                         fragment = new GhareluNuksheFragment();
                         loadFragment(fragment);
                         return true;
 
+                        // Showing CheckMe Fragment when clicked.
                     case R.id.cart:
-                        //              Toast.makeText(MainActivity.this, "Cart", Toast.LENGTH_LONG).show();
                         fragment = new CheckMeFragment();
                         loadFragment(fragment);
                         return true;
+
+                    // Showing FinDisease Fragment when clicked.
                     case R.id.account:
                         fragment = new FinDiseaseFragment();
                         loadFragment(fragment);
-                        //            Toast.makeText(MainActivity.this, "Account", Toast.LENGTH_LONG).show();
                         return true;
                 }
+
                 return false;
             }
         });
     }
 
+    private void AddXMLToJava() {
+
+        bottomNavigationView = findViewById(R.id.navigation);
+        myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-
         inflater.inflate(R.menu.appbar, menu);
 
         return true;
@@ -90,17 +125,18 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
-
                 return true;
 
+                // when user clicks on about section dialog will appear and it will show details about Swasthya.
             case R.id.action_about:
                 // User chose the "Settings" item, show the app settings UI...
 
                 final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                //  alertDialog.setContentView(R.layout.menudialog);
+
                 alertDialog.setTitle("Swasthya");
                 alertDialog.setIcon(R.drawable.ic_social_care_green);
                 alertDialog.setCancelable(true);
@@ -117,15 +153,6 @@ public class HomeScreenActivity extends AppCompatActivity {
                         alertDialog.cancel();
                     }
                 });
-               /* alertDialog.setButton(alertDialog.BUTTON_NEGATIVE, "Not Agree", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ChatActivity.this, "Sorry. we can not allow you to post anything until you do not accept our terms and conditions.!", Toast.LENGTH_LONG).show();
-                       // Intent intent = new Intent(ChatActivity.this, MainHomeScreen.class);
-                       // startActivity(intent);
-                       // finish();
-                    }
-                });*/
 
                 alertDialog.show();
 
