@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.example.sheetalkumar.swasthya.Adapter.PagerAdapter;
 import com.example.sheetalkumar.swasthya.R;
 
