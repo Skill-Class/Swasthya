@@ -17,60 +17,52 @@ import android.widget.TextView;
 import com.example.sheetalkumar.swasthya.Adapter.SlideAdapter;
 import com.example.sheetalkumar.swasthya.R;
 
-public class IntroActivity extends AppCompatActivity {
 
 
 /*
-    @Dev - Sheetal Kumar
-    Date - 23 Jan 2019
- */
+      @Author - Sheetal Kumar
+      -------------------------------------
+      In App - Splash Activity
+      Attached adapter - None
+      Objective -  To show splash screen and to to intro screen after particular time.
+      Todo - nothing
+      Status - complete
+      -------------------------------------
+
+*/
+    public class IntroActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private LinearLayout mDotLayout;
     private TextView[] mDots;
-    public TextView textViewLang;
     public TextView h;
-    public TextView thankyoutext, textView, lovetext;
-
-
     public TextView e;
-
     private SlideAdapter sliderAdapter;
-
     private ImageButton mNextBtn;
     private Button mPreBtn;
-
     private int mCurrentPage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
 
-        viewPager = findViewById(R.id.viewPager);
-        mDotLayout = findViewById(R.id.dotsLayout);
-        mNextBtn = findViewById(R.id.nextBtn);
-        mPreBtn = findViewById(R.id.preBtn);
+        /*
+         **
+         * Connecting all XML views to java file using findViewById
+         */
+        AddXMLToJava();
+
+
 
 
         sliderAdapter = new SlideAdapter(this);
 
         viewPager.setAdapter(sliderAdapter);
 
-
-        // thankyoutext = findViewById(R.id.textView29);
-        //textView = findViewById(R.id.textView30);
-        //  lovetext = findViewById(R.id.loveText);
-
-
-        // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.movefromleft);
-        // Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.movesearch);
-
-        // thankyoutext.startAnimation(animation);
-        // textView.startAnimation(animation);
-//        lovetext.startAnimation(animation1);
 
         addDotsIndicator(0);
         viewPager.addOnPageChangeListener(viewListner);
@@ -107,6 +99,16 @@ public class IntroActivity extends AppCompatActivity {
         });
     }
 
+    private void AddXMLToJava() {
+
+        viewPager = findViewById(R.id.viewPager);
+        mDotLayout = findViewById(R.id.dotsLayout);
+        mNextBtn = findViewById(R.id.nextBtn);
+        mPreBtn = findViewById(R.id.preBtn);
+
+
+    }
+
     //page transform starts
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.85f;
@@ -131,44 +133,6 @@ public class IntroActivity extends AppCompatActivity {
             }
 
         }
-
-          /*  if (position < -1) { // [-Infinity,-1)
-                // This page is way off-screen to the left.
-                view.setAlpha(0f);
-
-            } else if (position <= 1) { // [-1,1]
-                // Modify the default slide transition to shrink the page as well
-                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
-                float vertMargin = pageHeight * (1 - scaleFactor) / 2;
-                float horzMargin = pageWidth * (1 - scaleFactor) / 2;
-                if (position < 0) {
-                    view.setTranslationX(horzMargin - vertMargin / 2);
-
-                   // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
-                   // ImageView img1= view.findViewById(R.id.img);
-                    //img1.startAnimation(animation);
-
-                } else {
-                    view.setTranslationX(-horzMargin + vertMargin / 2);
-                  //  Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
-                   // ImageView img1= view.findViewById(R.id.img);
-                   // img1.startAnimation(animation);
-                }
-
-                // Scale the page down (between MIN_SCALE and 1)
-                view.setScaleX(scaleFactor);
-                view.setScaleY(scaleFactor);
-
-                // Fade the page relative to its size.
-                view.setAlpha(MIN_ALPHA +
-                        (scaleFactor - MIN_SCALE) /
-                                (1 - MIN_SCALE) * (1 - MIN_ALPHA));
-
-            } else { // (1,+Infinity]
-                // This page is way off-screen to the right.
-                view.setAlpha(0f);
-            }
-        }*/
     }
 
 

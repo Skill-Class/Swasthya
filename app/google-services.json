@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1046572743559",
+    "firebase_url": "https://swasthya-683fa.firebaseio.com",
+    "project_id": "swasthya-683fa",
+    "storage_bucket": "swasthya-683fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046572743559:android:ea84591e2875b7df",
+        "android_client_info": {
+          "package_name": "com.example.sheetalkumar.swasthya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046572743559-44qon209680r74v0a0g8gms6ehdhsq4a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sheetalkumar.swasthya",
+            "certificate_hash": "2ee1587bfe5f31952b3bdaf6faf8c1eb7b434147"
+          }
+        },
+        {
+          "client_id": "1046572743559-i4tdqpud05p107tr9dbcklkmf7pd0ahb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9nYnfRb4rFfz-1XozK1AtlMxTwF87VaY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046572743559-i4tdqpud05p107tr9dbcklkmf7pd0ahb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
