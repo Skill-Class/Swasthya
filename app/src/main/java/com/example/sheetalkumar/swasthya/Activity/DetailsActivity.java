@@ -12,38 +12,45 @@ import android.widget.TextView;
 import com.example.sheetalkumar.swasthya.R;
 
 
-/*
-    @Dev - Sheetal Kumar
-    Date - 23 Jan 2019
+/**
+ * @Author - Sheetal Kumar
+ * -------------------------------------
+ * In App - Splash Activity
+ * Attached adapter - None
+ * Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
+ * Todo - nothing
+ * Status - complete
+ * -------------------------------------
  */
 
 public class DetailsActivity extends AppCompatActivity {
 
-    Toolbar myToolbar;
     private TextView descTextView, titleTextView, headingTextView;
-    private String Desc;
-    private String data;
-
+    private Toolbar myToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        /**
+         **
+         * Connecting all XML views to java file using findViewById
+         */
+        AddXMLToJava();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        /**
+         **
+         * Connecting all XML views to java file using findViewById
+         */
+        ReceiveDataFromDailyTipsFragmentInBundle();
 
 
-        descTextView = findViewById(R.id.textView21);
-        titleTextView = findViewById(R.id.title_text);
-        headingTextView = findViewById(R.id.textView18);
+    }
 
+    private void ReceiveDataFromDailyTipsFragmentInBundle() {
 
         // Receiving data from fragment to an activity (DailyTipsFragment -> DetailsActivity)
-
         try {
 
             Bundle intent = getIntent().getExtras();
@@ -55,15 +62,27 @@ public class DetailsActivity extends AppCompatActivity {
             titleTextView.setText(Title);
             headingTextView.setText(Heading);
 
-
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void AddXMLToJava() {
+
+        myToolbar = findViewById(R.id.my_toolbar);
+        descTextView = findViewById(R.id.textView21);
+        titleTextView = findViewById(R.id.title_text);
+        headingTextView = findViewById(R.id.textView18);
+
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-
         inflater.inflate(R.menu.appbar, menu);
 
         return true;
@@ -87,7 +106,6 @@ public class DetailsActivity extends AppCompatActivity {
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }

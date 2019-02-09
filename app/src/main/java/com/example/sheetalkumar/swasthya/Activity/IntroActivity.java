@@ -18,19 +18,19 @@ import com.example.sheetalkumar.swasthya.Adapter.SlideAdapter;
 import com.example.sheetalkumar.swasthya.R;
 
 
+/**
+ * @Author - Sheetal Kumar
+ * -------------------------------------
+ * In App - Intro Activity
+ * Attached adapter - None
+ * Objective -  To show intro screen with slide adapter
+ * Todo - nothing
+ * Status - complete
+ * -------------------------------------
+ */
 
-/*
-      @Author - Sheetal Kumar
-      -------------------------------------
-      In App - Splash Activity
-      Attached adapter - None
-      Objective -  To show splash screen and to to intro screen after particular time.
-      Todo - nothing
-      Status - complete
-      -------------------------------------
 
-*/
-    public class IntroActivity extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private LinearLayout mDotLayout;
@@ -50,53 +50,66 @@ import com.example.sheetalkumar.swasthya.R;
         setContentView(R.layout.activity_intro);
 
 
-        /*
+        /**
          **
          * Connecting all XML views to java file using findViewById
          */
         AddXMLToJava();
 
+        /**
+         * Add adapters
+         */
+        setAdapterAndViewpager();
 
+    }
 
+    private void setAdapterAndViewpager() {
 
+        // SlideAdapter class will handle add data and size of the slider.
         sliderAdapter = new SlideAdapter(this);
 
+        //setting the adapter to view pager
         viewPager.setAdapter(sliderAdapter);
-
-
         addDotsIndicator(0);
         viewPager.addOnPageChangeListener(viewListner);
-
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
-
+        //Handling click event (next button pressed.)
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //if user if one third slider and he/she clicks on next button he/she will be send to Login Screen
                 if (mCurrentPage == 3) {
 
-                    Intent intent = new Intent(IntroActivity.this, LoginActivity.class);   // sending to the Login Activity
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
-                    finish();
+                    sendToLoginScreen();
+
                 }
+
+                //sending user to next screen
                 viewPager.setCurrentItem(mCurrentPage + 1); // sending back to next page from the current one
-
-
-                //   Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
-                //  viewPager.startAnimation(animation);
-                // viewPager.startAnimation(animation);
             }
         });
 
-
+        // Handling click event (previous button clicked)
         mPreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // send user to previous slide from the current one.
                 viewPager.setCurrentItem(mCurrentPage - 1);
             }
         });
+
+    }
+
+    private void sendToLoginScreen() {
+
+        Intent intent = new Intent(IntroActivity.this, LoginActivity.class);   // sending to the Login Activity
+        startActivity(intent);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+        finish();
+
     }
 
     private void AddXMLToJava() {
@@ -109,37 +122,34 @@ import com.example.sheetalkumar.swasthya.R;
 
     }
 
-    //page transform starts
+    /**
+     * Page transform starts
+     * At every slide adding animation to the title and desc of the slider.
+     */
+
     public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
-        private static final float MIN_SCALE = 0.85f;
-        private static final float MIN_ALPHA = 0.5f;
 
         public void transformPage(View view, float position) {
-            int pageWidth = view.getWidth();
-            int pageHeight = view.getHeight();
 
             TextView desc = view.findViewById(R.id.text2);
-
+            TextView title = view.findViewById(R.id.text1);
 
             if (position < desc.length()) {
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.left_to_right_slide_adapter);
                 Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.right_to_left_slide_adapter);
 
-                TextView title = view.findViewById(R.id.text1);
                 title.startAnimation(animation1);
                 desc.startAnimation(animation);
-
-
             }
 
         }
     }
+    /** page transform ends */
 
 
-    // page transform ends
-
-
-    // starting new function to add dots
+    /**
+     * Starting new function to add dots
+     */
 
     public void addDotsIndicator(int j) {
 
@@ -207,7 +217,5 @@ import com.example.sheetalkumar.swasthya.R;
 
         }
     };
-
-
 }
 

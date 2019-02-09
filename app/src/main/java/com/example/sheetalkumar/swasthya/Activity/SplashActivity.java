@@ -1,6 +1,6 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
-import android.animation.ValueAnimator;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,21 +11,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.sheetalkumar.swasthya.R;
 
 
-/*
-      @Author - Sheetal Kumar
-      -------------------------------------
-      In App - Splash Activity
-      Attached adapter - None
-      Objective -  To show splash screen and to to intro screen after particular time.
-      Todo - nothing
-      Status - complete
-      -------------------------------------
-
-*/
+/**
+ * @Author - Sheetal Kumar
+ * -------------------------------------
+ * In App - Splash Activity
+ * Attached adapter - None
+ * Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
+ * Todo - nothing
+ * Status - complete
+ * -------------------------------------
+ */
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -38,13 +36,13 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        /*
+        /**
          **
          * Connecting all XML views to java file using findViewById
          */
         AddXMLToJava();
 
-        /*
+        /**
          **
          * Adding Animation to Views
          * Here using AnimationUtils

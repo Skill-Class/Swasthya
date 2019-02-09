@@ -13,53 +13,54 @@ import android.widget.TextView;
 import com.example.sheetalkumar.swasthya.Adapter.PagerAdapter;
 import com.example.sheetalkumar.swasthya.R;
 
+
+/**
+ * @Author - Sheetal Kumar
+ * -------------------------------------
+ * In App - Splash Activity
+ * Attached adapter - None
+ * Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
+ * Todo - nothing
+ * Status - complete
+ * -------------------------------------
+ */
+
 public class DetailsGNActivity extends AppCompatActivity {
 
-
-    /*
-        @Dev - Sheetal Kumar
-        Date - 23 Jan 2019
-     */
-
     private TextView titleText;
+    private Toolbar myToolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_gn);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        /**
+         **
+         * Connecting all XML views to java file using findViewById
+         */
+        AddXMLToJava();
 
+        /**
+         * check value of bundle
+         */
+        CheckBundle();
 
-    titleText = findViewById(R.id.title_text);
+        /**
+         * Add TabLayout
+         * */
+        AddTabLayoutToHomeScreen();
 
+    }
 
-        try {
+    private void AddTabLayoutToHomeScreen() {
 
-            Bundle intent = getIntent().getExtras();
-            Integer Title = intent.getInt("Title");
-           // Integer Desc = intent.getInt("Desc");
-           // Integer Heading = intent.getInt("Heading");
-
-            titleText.setText(Title);
-          //  titleTextView.setText(Title);
-           // headingTextView.setText(Heading);
-
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        // Title of tab layout
         tabLayout.addTab(tabLayout.newTab().setText("लक्षण"));
         tabLayout.addTab(tabLayout.newTab().setText("घरेलू उपाय"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
 
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
@@ -81,6 +82,34 @@ public class DetailsGNActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void CheckBundle() {
+
+        try {
+            Bundle intent = getIntent().getExtras();
+            Integer Title = intent.getInt("Title");
+            titleText.setText(Title);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void AddXMLToJava() {
+
+        myToolbar = findViewById(R.id.my_toolbar);
+        titleText = findViewById(R.id.title_text);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.pager);
+
+        // Adding toolbar to Home screen
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
     }
 
 

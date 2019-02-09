@@ -21,24 +21,25 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+/**
+      @Author - Sheetal Kumar
+      -------------------------------------
+      In App - Splash Activity
+      Attached adapter - None
+      Objective -  To show splash screen and when user clicks on get started button he/she will be send to intro screen activity.
+      Todo - nothing
+      Status - complete
+      -------------------------------------
+
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
-
-
-    /*
-        @Dev - Sheetal Kumar
-        Date - 23 Jan 2019
-     */
-
-    private LottieAnimationView lottieAnimationView;
     private TextView RegisterNowText, textView1, textView2;
     private Button loginButton;
-
-    private  Context context;
-
     private ConstraintLayout constraintLayout;
     private ImageView logoImage;
-
     private ProgressDialog progressDialog;
 
     @Override
@@ -46,16 +47,58 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /**
+         **
+         * Connecting all XML views to java file using findViewById
+         */
+        AddXMLToJava();
 
-        RegisterNowText = findViewById(R.id.textView3);
-        loginButton = findViewById(R.id.button2);
-        constraintLayout = findViewById(R.id.constraintLayout);
-        logoImage = findViewById(R.id.imageView);
+        /**
+         * Add adapters
+         */
+        AddAnimationToViews();
 
-        textView1 = findViewById(R.id.textView2);
-        textView2 = findViewById(R.id.textView3);
+
+
+        // Sending user to home screen after login button clicked
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendToHomeScreen();
+            }
+        });
+
+        // Sending user to register screen
+        RegisterNowText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendToRegisterActivity();
+            }
+        });
+    }
+
+    private void sendToRegisterActivity() {
+
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);    // Activity transition animation
+
+    }
+
+    private void sendToHomeScreen() {
 
         progressDialog = new ProgressDialog(this);
+        progressDialog.setIcon(R.drawable.ic_social_care_green);
+        progressDialog.setTitle("Signing in");
+        progressDialog.setMessage("Please wait for a moment..");
+        progressDialog.show();
+
+        Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);    // Activity transition animation
+    }
+
+    private void AddAnimationToViews() {
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bottom_to_top);
         Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.top_to_bottom);
@@ -65,45 +108,16 @@ public class LoginActivity extends AppCompatActivity {
         textView1.startAnimation(animation);
         textView2.startAnimation(animation);
 
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                progressDialog.setIcon(R.drawable.ic_social_care_green);
-                progressDialog.setTitle("Signing in");
-                progressDialog.setMessage("Please wait for a moment..");
-                progressDialog.show();
-
-                // Write a message to the database
-               // FirebaseApp.initializeApp(context);
-               // FirebaseDatabase database = FirebaseDatabase.getInstance();
-               // DatabaseReference myRef = database.getReference("message");
-
-               // myRef.setValue("Hello, World!");
-
-                Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);    // Activity transition animation
-            }
-        });
-        // lottieAnimationView = findViewById(R.id.lotti_animation);
-
-
-        RegisterNowText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);    // Activity transition animation
-
-            }
-        });
-
-
-        //  lottieAnimationView.playAnimation();
     }
 
+    private void AddXMLToJava() {
 
+        RegisterNowText = findViewById(R.id.textView3);
+        loginButton = findViewById(R.id.button2);
+        constraintLayout = findViewById(R.id.constraintLayout);
+        logoImage = findViewById(R.id.imageView);
+        textView1 = findViewById(R.id.textView2);
+        textView2 = findViewById(R.id.textView3);
 
+    }
 }
