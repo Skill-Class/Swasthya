@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.example.sheetalkumar.swasthya.Fragment.BlogPostFragment;
 import com.example.sheetalkumar.swasthya.Fragment.CheckMeFragment;
 import com.example.sheetalkumar.swasthya.Fragment.DailyTipsFragment;
 import com.example.sheetalkumar.swasthya.Fragment.FinDiseaseFragment;
@@ -84,6 +86,13 @@ public class HomeScreenActivity extends AppCompatActivity {
                         fragment = new GhareluNuksheFragment();
                         loadFragment(fragment);
                         return true;
+
+                    case R.id.blog:
+                      //  fragment = new BlogPostFragment();
+                        //loadFragment(fragment);
+                        startActivity(new Intent(HomeScreenActivity.this,BlogPostActivity.class));
+                        return true;
+
 
                         // Showing CheckMe Fragment when clicked.
                     case R.id.cart:

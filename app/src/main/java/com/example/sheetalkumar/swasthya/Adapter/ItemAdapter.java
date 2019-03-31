@@ -1,11 +1,13 @@
 package com.example.sheetalkumar.swasthya.Adapter;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +50,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         Log.d(TAG, "onBindViewHolder: called.");
 
         holder.image.setImageResource(ItemImages.get(position));
+        holder.image.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
+
+        holder.constraintLayout.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
         holder.itemName.setText(ItemName.get(position));
 
         // holder.name.setText(mNames.get(position));
@@ -68,13 +73,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         ImageView image;
         TextView itemName;
+        private ConstraintLayout constraintLayout;
         // TextView name;
         // TextView time;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            constraintLayout = itemView.findViewById(R.id.constraintLayout2);
             image = itemView.findViewById(R.id.custom_itemImages);
             itemName = itemView.findViewById(R.id.item_name);
+
             //    name = itemView.findViewById(R.id.textView2);
             //  time = itemView.findViewById(R.id.textView3);
         }

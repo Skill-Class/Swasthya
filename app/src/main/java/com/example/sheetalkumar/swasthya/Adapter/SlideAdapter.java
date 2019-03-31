@@ -19,7 +19,7 @@ public class SlideAdapter extends PagerAdapter {
 
     /*
         @Dev - Sheetal Kumar
-        Date - 23 Jan 2019
+        Date - 23 Jan 2018
      */
 
     LayoutInflater layoutInflater;

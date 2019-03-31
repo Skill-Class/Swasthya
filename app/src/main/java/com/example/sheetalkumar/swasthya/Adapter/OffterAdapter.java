@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.sheetalkumar.swasthya.R;
@@ -45,6 +46,7 @@ public class OffterAdapter extends RecyclerView.Adapter<OffterAdapter.ViewHolder
         Log.d(TAG, "onBindViewHolder: called.");
 
         holder.image.setImageResource(OfferImages.get(position));
+        holder.image.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_scale_animation));
 
         // holder.name.setText(mNames.get(position));
         // holder.time.setText(mTime.get(position));

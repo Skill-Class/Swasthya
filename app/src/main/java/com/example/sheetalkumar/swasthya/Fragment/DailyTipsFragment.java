@@ -142,11 +142,6 @@ public class DailyTipsFragment extends Fragment {
 
         textViewone = rootView.findViewById(R.id.textView5);
 
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.right_to_left);
-        Animation animation1 = AnimationUtils.loadAnimation(getActivity(), R.anim.left_to_right);
-
-        textViewone.startAnimation(animation);
-
         progressDialog = new ProgressDialog(getActivity());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -155,15 +150,11 @@ public class DailyTipsFragment extends Fragment {
         imageView = rootView.findViewById(R.id.imageView2);
 
         offterRecyclerView.setLayoutManager(layoutManager);
-        OffterAdapter adapter = new OffterAdapter(getContext(), OfferImages);
+
+        OffterAdapter adapter = new OffterAdapter(getActivity(), OfferImages);
 
 
         offterRecyclerView.setAdapter(adapter);
-        offterRecyclerView.startAnimation(animation);
-
-        //  int resId = R.anim.layout_animation_fall_down;
-        // LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
-        // offterRecyclerView.setLayoutAnimation(animation);
 
 
 
@@ -201,10 +192,12 @@ public class DailyTipsFragment extends Fragment {
 
         LinearLayoutManager layoutManagerForItems = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         RecyclerView itemRecyclerView = rootView.findViewById(R.id.items_recyclerView);
+
         itemRecyclerView.setLayoutManager(layoutManagerForItems);
-        ItemAdapter adapterforItem = new ItemAdapter(getContext(), itemImages, itemName);
+        ItemAdapter adapterforItem = new ItemAdapter(getActivity(), itemImages, itemName);
+
         itemRecyclerView.setAdapter(adapterforItem);
-        itemRecyclerView.startAnimation(animation1);
+      //  itemRecyclerView.startAnimation(animation1);
 
         // push notification | check API Level - Integer.valueOf(android.os.Build.VERSION.SDK)
 
