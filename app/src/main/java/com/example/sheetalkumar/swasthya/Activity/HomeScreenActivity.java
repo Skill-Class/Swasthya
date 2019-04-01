@@ -21,6 +21,7 @@ import com.example.sheetalkumar.swasthya.Fragment.DailyTipsFragment;
 import com.example.sheetalkumar.swasthya.Fragment.FinDiseaseFragment;
 import com.example.sheetalkumar.swasthya.Fragment.GhareluNuksheFragment;
 import com.example.sheetalkumar.swasthya.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -38,6 +39,8 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private Toolbar myToolbar;
+    private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -51,6 +54,7 @@ public class HomeScreenActivity extends AppCompatActivity {
          */
         AddXMLToJava();
 
+        mAuth = FirebaseAuth.getInstance();
 
         /**
          **
@@ -165,6 +169,8 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             case R.id.action_logout:
                 // User chose the "Settings" item, show the app settings UI...
+                mAuth.signOut();
+                startActivity(new Intent(HomeScreenActivity.this,LoginActivity.class));
 
                 return true;
 

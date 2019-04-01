@@ -71,6 +71,7 @@ public class RecyclerViewAdapterForChat extends RecyclerView.Adapter<RecyclerVie
 
 
         String current_user_id = mAuth.getCurrentUser().getUid();
+
         String from_user = c.getUserId();
         if (from_user.equals(current_user_id)) {
             holder.chattext.setBackgroundResource(R.drawable.chatrighttext);

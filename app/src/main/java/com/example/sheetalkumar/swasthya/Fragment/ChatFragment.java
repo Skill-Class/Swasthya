@@ -1,5 +1,6 @@
 package com.example.sheetalkumar.swasthya.Fragment;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.sheetalkumar.swasthya.Adapter.RecyclerViewAdapterForChat;
 import com.example.sheetalkumar.swasthya.Model.ChatData;
+import com.example.sheetalkumar.swasthya.Model.Users;
 import com.example.sheetalkumar.swasthya.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,11 +36,9 @@ import java.util.List;
 import java.util.Map;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 public class ChatFragment extends Fragment {
-
-
-
 
 
     private EditText mInputMessageView;
@@ -52,7 +53,7 @@ public class ChatFragment extends Fragment {
 
     private EditText userName;
 
-    private DatabaseReference mRootRef;
+    private DatabaseReference mRootRef, myRef;
     private FirebaseDatabase firebaseDatabase;
     private ArrayList<String> mchat = new ArrayList<>();
     // private List<ChatData> chatDataList;
@@ -69,7 +70,6 @@ public class ChatFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mCurrentUserId = mAuth.getCurrentUser().getUid();
-
     }
 
     @Override
@@ -79,11 +79,12 @@ public class ChatFragment extends Fragment {
         View rootview =  inflater.inflate(R.layout.fragment_chat, container, false);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
+
+
         backimg = rootview.findViewById(R.id.imageView9);
         mInputMessageView = rootview.findViewById(R.id.chatText);
         userName = rootview.findViewById(R.id.textView8);
-        userName = rootview.findViewById(R.id.textView8);
-
+       // userName = rootview.findViewById(R.id.textView8);
 
 
         mAdapter = new RecyclerViewAdapterForChat(mMessagesList);
@@ -106,7 +107,8 @@ public class ChatFragment extends Fragment {
             public void onClick(View v) {
                 // String chatMessage = mInputMessageView.getText().toString();
                 // mchat.add(chatMessage);
-                sendMessage();
+
+                sendMessage(userName.getText().toString());
                 mInputMessageView.setText(" ");
                 // hiding keyboard after message is send.
                 InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
@@ -154,11 +156,13 @@ public class ChatFragment extends Fragment {
 
             }
         });
+
+
     }
 
 
 
-    private void sendMessage() {
+    private void sendMessage(String userName) {
         String message = mInputMessageView.getText().toString();
         if (!TextUtils.isEmpty(message)) {
 
@@ -175,7 +179,7 @@ public class ChatFragment extends Fragment {
             Map<String, String> DataToSave = new HashMap<>();
             DataToSave.put("chatMessage", message);
             DataToSave.put("userId", mUser.getUid());
-            DataToSave.put("userName",  userName.getText().toString());
+            DataToSave.put("userName", userName);
             DataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
 
             user_message_push.setValue(DataToSave);
