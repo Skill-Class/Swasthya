@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.sheetalkumar.swasthya.Fragment.BlogPostFragment;
+import com.example.sheetalkumar.swasthya.Fragment.ChatFragment;
 import com.example.sheetalkumar.swasthya.Fragment.FollowFragment;
 import com.example.sheetalkumar.swasthya.Fragment.TabOne;
 import com.example.sheetalkumar.swasthya.Fragment.TabTwo;
@@ -25,8 +26,8 @@ public class PagerAdapterForBlogPostActivity extends FragmentStatePagerAdapter {
                 BlogPostFragment tab1 = new BlogPostFragment();
                 return tab1;
             case 1:
-                TabOne tab2 = new TabOne();
-                return tab2;
+                ChatFragment chatTab = new ChatFragment();
+                return chatTab;
             case 2:
                 FollowFragment followTab = new FollowFragment();
                 return followTab;

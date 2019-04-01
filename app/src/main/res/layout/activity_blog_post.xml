@@ -13,6 +13,7 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         app:titleTextColor="#fff"
+
         android:visibility="invisible"
         android:theme="@style/ToolbarTheme"
         app:layout_constraintEnd_toEndOf="parent"

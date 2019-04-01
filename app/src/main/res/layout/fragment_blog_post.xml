@@ -17,7 +17,7 @@
         android:ems="10"
         android:textSize="14sp"
         android:fontFamily="@font/ovo"
-        android:hint="search"
+        android:hint="Search"
         android:inputType="textPersonName"
         android:textColor="#999da4"
         app:layout_constraintEnd_toEndOf="parent"

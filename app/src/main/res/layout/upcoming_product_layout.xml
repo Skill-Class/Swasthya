@@ -18,6 +18,7 @@
         android:background="@drawable/upcoing_product_layout_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -83,6 +84,87 @@
             app:layout_constraintStart_toEndOf="@+id/productname"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/productDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/ovo"
+            android:text="2.5K"
+            android:textColor="@color/colorFontGreen"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_favorite_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/productDetails"
+            app:layout_constraintTop_toBottomOf="@+id/productDetails"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/productDate3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/ovo"
+            android:text="1.5K"
+            android:textColor="@color/colorFontGreen"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/productDate2"
+            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="@+id/productDate2"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_comments"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/productDate2"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_share_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/productDetails"
+            app:layout_constraintVertical_bias="0.0" />
+
 
     </android.support.constraint.ConstraintLayout>
 
@@ -92,12 +174,12 @@
         android:layout_height="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:transitionName="enter"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout16"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout16"
         app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout16"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout16"
         app:layout_constraintVertical_bias="0.089"
-        android:transitionName="enter"
         app:srcCompat="@drawable/backgroundimg" />
 </android.support.constraint.ConstraintLayout>

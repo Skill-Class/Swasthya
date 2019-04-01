@@ -53,7 +53,8 @@ public class AdapterForFollowFragment extends RecyclerView.Adapter<AdapterForFol
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         holder.productImage.setImageResource(mData.get(position).getProductImage());
-        holder.itemDetailsText.setText(mData.get(position).getItemType());
+        holder.itemDetailsText.setText("Writes about : " + mData.get(position).getItemType());
+
         holder.followButton.setText(mData.get(position).getPrize()); //prize = follow or following status
         holder.productImage.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_transition_animation));
         holder.constraintLayout.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_scale_animation));

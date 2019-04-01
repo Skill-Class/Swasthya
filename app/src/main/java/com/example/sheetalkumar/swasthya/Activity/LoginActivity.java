@@ -2,16 +2,26 @@ package com.example.sheetalkumar.swasthya.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.sheetalkumar.swasthya.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * @Author - Sheetal Kumar
@@ -32,10 +42,28 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView logoImage;
     private ProgressDialog progressDialog;
 
+    private FirebaseAuth mAuth;
+    private TextInputLayout emailtext, passwordtext;
+    private FirebaseDatabase firebaseDatabase;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
+        mAuth = FirebaseAuth.getInstance();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+
+
+
+        //   databaseReferenceroot = firebaseDatabase.getReference();
+
 
         /**
          **
@@ -52,8 +80,32 @@ public class LoginActivity extends AppCompatActivity {
         // Sending user to home screen after login button clicked
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                sendToHomeScreen();
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, "Please wait..", Toast.LENGTH_SHORT).show();
+                String email = emailtext.getEditText().getText().toString().trim();
+                String password = passwordtext.getEditText().getText().toString().trim();
+
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful()) {
+
+                                Intent mainIntent = new Intent(LoginActivity.this, HomeScreenActivity.class);
+                                startActivity(mainIntent);
+                                finish();
+
+                            } else {
+                                String erroMessage = task.getException().getMessage();
+                                Toast.makeText(LoginActivity.this, "Error : " + erroMessage, Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    });
+
+                }
             }
         });
 
@@ -107,6 +159,11 @@ public class LoginActivity extends AppCompatActivity {
         logoImage = findViewById(R.id.imageView);
         textView1 = findViewById(R.id.textView2);
         textView2 = findViewById(R.id.textView3);
+        emailtext= findViewById(R.id.textInputLayoutemail);
+        passwordtext=findViewById(R.id.textinputlayoutpassword);
+
+
+
 
     }
 }
