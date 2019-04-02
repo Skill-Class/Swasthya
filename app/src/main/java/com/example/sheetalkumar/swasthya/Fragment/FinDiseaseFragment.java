@@ -3,6 +3,7 @@ package com.example.sheetalkumar.swasthya.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -17,6 +18,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +29,19 @@ import com.example.sheetalkumar.swasthya.Model.JsonPlaceHolderAPI;
 import com.example.sheetalkumar.swasthya.Model.Post;
 import com.example.sheetalkumar.swasthya.Model.places;
 import com.example.sheetalkumar.swasthya.R;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -48,7 +57,7 @@ public class FinDiseaseFragment extends Fragment {
 
     /*
         @Dev - Sheetal Kumar
-        Date - 23 Jan 2019
+        Date - 30 March 2019
      */
 
     private LottieAnimationView lottieAnimationView;
@@ -57,7 +66,7 @@ public class FinDiseaseFragment extends Fragment {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private ProgressDialog progressDialog;
-    private TextView texttwo;
+    private TextView texttwo,textone;
     private String[] parts;
 
     private DatabaseReference databaseReference;
@@ -65,10 +74,28 @@ public class FinDiseaseFragment extends Fragment {
     public String mydata = "";
     public String jsondata = "";
 
+    private List<String> percentageofFever = new ArrayList<>();
+    private List<String> feverName = new ArrayList<>();
+
+
+    private PieChart pieChart;
+    private PieDataSet dataSet;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+      //  ArrayList feverName = new ArrayList();
+        feverName.add("Dengue");
+        feverName.add("Normal Fever");
+        feverName.add("Maleriya");
+
+
+
+
+
+        //  ArrayList percentageOfFever = new ArrayList();
 
         //  getImages();
 
@@ -79,6 +106,15 @@ public class FinDiseaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_fin_disease, container, false);
 
+
+        textone = rootView.findViewById(R.id.textView);
+        texttwo = rootView.findViewById(R.id.textview2);
+
+        textone.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_scale_animation));
+       texttwo.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.zoom_enter));
+
+
+
         // lottieAnimationView = rootView.findViewById(R.id.intro_lottie_animation_view);
         //lottieAnimationView.playAnimation();
         // Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_to_top);
@@ -87,11 +123,24 @@ public class FinDiseaseFragment extends Fragment {
 
         //fetching current location of user
 
-        locationText = rootView.findViewById(R.id.locationText);
-        locationButton = rootView.findViewById(R.id.getLocationBtn);
-        texttwo = rootView.findViewById(R.id.textView11);
+       // locationText = rootView.findViewById(R.id.locationText);
+       // locationButton = rootView.findViewById(R.id.getLocationBtn);
+       // texttwo = rootView.findViewById(R.id.textView11);
+        pieChart = rootView.findViewById(R.id.piechart);
 
         progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setIcon(R.drawable.ic_social_care_green);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Fetching your current location.");
+        progressDialog.show();
+
+        setPieChart();
+
+        pieChart.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_scale_animation));
+        progressDialog.dismiss();
+//        locationButton.setVisibility(View.GONE);
+
+
 
 
         if (ContextCompat.checkSelfPermission(getActivity(),
@@ -103,7 +152,7 @@ public class FinDiseaseFragment extends Fragment {
 
         }
 
-        locationButton.setOnClickListener(new View.OnClickListener() {
+      /*  locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressDialog.setIcon(R.drawable.ic_social_care_green);
@@ -114,8 +163,9 @@ public class FinDiseaseFragment extends Fragment {
                 // fetching the current location
                 getLocation();
 
+
             }
-        });
+        });*/
 
        /* Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
@@ -187,6 +237,29 @@ public class FinDiseaseFragment extends Fragment {
         return rootView;
     }
 
+    private void setPieChart() {
+        pieChart.setUsePercentValues(true);
+        pieChart.getDescription().setEnabled(true);
+        pieChart.setExtraOffsets(5,10,5,5);
+        pieChart.setDragDecelerationFrictionCoef(0.9f);
+        pieChart.setTransparentCircleRadius(61f);
+        pieChart.setHoleColor(Color.WHITE);
+
+        ArrayList<PieEntry> yValues = new ArrayList<>();
+        yValues.add(new PieEntry(34f,"Dengue"));
+        yValues.add(new PieEntry(56f,"Normal Fever"));
+        yValues.add(new PieEntry(66f,"Maleriya"));
+
+        PieDataSet dataSet = new PieDataSet(yValues, "Desease Per Regions");
+        dataSet.setSliceSpace(3f);
+        dataSet.setSelectionShift(5f);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        PieData pieData = new PieData((dataSet));
+        pieData.setValueTextSize(10f);
+        pieData.setValueTextColor(Color.YELLOW);
+        pieChart.setData(pieData);
+    }
+
 
     private void getLocation() {
 
@@ -203,7 +276,7 @@ public class FinDiseaseFragment extends Fragment {
                     locationButton.setEnabled(false);
 
                     // showing latitude and longitude
-                    locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+                  //  locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
                     try {
 
@@ -211,11 +284,14 @@ public class FinDiseaseFragment extends Fragment {
 
                         Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                        locationText.setText(locationText.getText() + "\n\nYour Current location is - " + "\n" + addresses.get(0).getAddressLine(0) + ", " +
-                                addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2));
+
+                        //    locationText.setText(locationText.getText() + "\n\nYour Current location is - " + "\n" + addresses.get(0).getAddressLine(0) + ", " +
+                      //          addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2));
 
                         String finalLocation = addresses.get(0).getAddressLine(0);
-                        //    Toast.makeText(getActivity(), finalLocation, Toast.LENGTH_SHORT).show();
+
+                        //calling pie chart function
+
 
                         if (finalLocation.contains(",")) {
                             // Split it.
@@ -294,8 +370,17 @@ public class FinDiseaseFragment extends Fragment {
 
                 // String currentlocation = currentLocation();
                 // String value = dataSnapshot.getValue(String.class);
-                texttwo.setText("\n Location : Malka Ganj\n\n" + "Maleriya - " + data1 + "%" + "\n" + "Dengue - " + data2 + "%" + "\n" + "Fever - " + data3 + "%" + "\n");
+
+                percentageofFever.add(data1);
+                percentageofFever.add(data2);
+                percentageofFever.add(data3);
+
+//                texttwo.setText("\n Location : Malka Ganj\n\n" + "Maleriya - " + data1 + "%" + "\n" + "Dengue - " + data2 + "%" + "\n" + "Fever - " + data3 + "%" + "\n");
                 // Toast.makeText(getActivity(),mydata,Toast.LENGTH_LONG).show();
+
+                // adding dataset into pie chart
+                addchat(percentageofFever);
+
             }
 
             @Override
@@ -303,6 +388,10 @@ public class FinDiseaseFragment extends Fragment {
 
             }
         });
+
+    }
+
+    private void addchat(List<String> percentageofFever) {
 
     }
 

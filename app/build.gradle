@@ -49,6 +49,10 @@ dependencies {
     //geofirebase
     implementation 'com.firebase:geofire-android:2.3.1'
 
+    // chart
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
     //alerter
 
 //    implementation 'com.google.android.gms:play-services:16.0.0'

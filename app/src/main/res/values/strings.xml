@@ -223,4 +223,6 @@ This feature of the application provides the name of the disease that most peopl
 </string>
     <string name="channel_name">hello</string>
     <string name="channel_description">data</string>
+    <string name="maleriya"><b>Malaria</b> is an infection caused by single-celled parasites that enter the blood through the bite of an Anopheles mosquito. These parasites, called plasmodia, belong to at least five species. Most human infections are caused by either Plasmodium falciparum or Plasmodium vivax</string>
+
 </resources>

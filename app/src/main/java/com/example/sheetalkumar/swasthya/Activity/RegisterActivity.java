@@ -64,26 +64,12 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         String userName = username.getEditText().getText().toString();
 
-        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(userName)
-               // .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
-                .build();
-
-        mAuth.getCurrentUser().updateProfile(profileUpdates)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            //Log.d(TAG, "User profile updated.");
-                        }
-                    }
-                });
 
         progressDialog = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        String currnetusername = mAuth.getCurrentUser().getDisplayName();
+//        String currnetusername = mAuth.getCurrentUser().getDisplayName();
         mdatabase = FirebaseDatabase.getInstance();
         databaseReference = mdatabase.getReference();
 
