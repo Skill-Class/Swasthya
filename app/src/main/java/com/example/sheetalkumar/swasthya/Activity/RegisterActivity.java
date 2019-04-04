@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-//        String currnetusername = mAuth.getCurrentUser().getDisplayName();
+//      String currnetusername = mAuth.getCurrentUser().getDisplayName();
         mdatabase = FirebaseDatabase.getInstance();
         databaseReference = mdatabase.getReference();
 

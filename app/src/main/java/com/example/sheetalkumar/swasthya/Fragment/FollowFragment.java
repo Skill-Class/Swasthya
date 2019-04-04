@@ -23,6 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * This sectio contain the follow screen data set
+ * In this screen user can follow the particular topic  and particular person
+
+ */
 public class FollowFragment extends Fragment {
 
     private RecyclerView myRecycleView;

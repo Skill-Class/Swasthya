@@ -13,6 +13,12 @@ import com.example.sheetalkumar.swasthya.R;
 
 public class TabTwo extends Fragment {
 
+    /**
+     *
+     * by sheetal kumar
+     * this tab is for gharelu nuskeh part two
+     * all rights reserved to sheetal kumar.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_tab_two, container, false);

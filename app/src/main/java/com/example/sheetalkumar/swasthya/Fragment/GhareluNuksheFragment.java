@@ -32,7 +32,7 @@ public class GhareluNuksheFragment extends Fragment {
 
     /*
         @Dev - Sheetal Kumar
-        Date - 23 Jan 2019
+        Date - 31 march 2019
      */
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<Integer> itemName = new ArrayList<>();
@@ -44,9 +44,12 @@ public class GhareluNuksheFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-
+         // getting image database
          getImages();
     }
+
+
+    // this function is adding data to the array list
 
     private void getImages() {
 
@@ -84,6 +87,7 @@ public class GhareluNuksheFragment extends Fragment {
         RecyclerView offterRecyclerView = rootView.findViewById(R.id.recyclerView);
         offterRecyclerView.setLayoutManager(layoutManager);
 
+        // defining the progress bar
         progressDialog = new ProgressDialog(getActivity());
 
 
@@ -100,6 +104,7 @@ public class GhareluNuksheFragment extends Fragment {
        // offterRecyclerView.startAnimation(animation1);
 
 
+        // adding the on click listner to the recycler view
         offterRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
                 offterRecyclerView, new ClickListener() {
 

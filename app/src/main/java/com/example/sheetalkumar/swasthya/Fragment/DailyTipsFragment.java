@@ -50,6 +50,13 @@ public class DailyTipsFragment extends Fragment {
         @Dev - Sheetal Kumar
         Date - 23 Jan 2019
      */
+
+
+    /**
+     * In this screen user can see the daily tips
+     * Used firebase for realtime database
+     * and firebase push notifications;
+     */
     private ArrayList<Integer> OfferImages = new ArrayList<>();
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<String> itemName = new ArrayList<>();

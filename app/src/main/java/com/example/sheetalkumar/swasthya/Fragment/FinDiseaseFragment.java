@@ -60,6 +60,11 @@ public class FinDiseaseFragment extends Fragment {
         Date - 30 March 2019
      */
 
+    /**
+     * In this activity user can  check that what kind of fever is highly active in particular area
+     * he/she can see a proper cart for that particular area and update details.
+     */
+
     private LottieAnimationView lottieAnimationView;
     private TextView locationText;
     private Button locationButton;
