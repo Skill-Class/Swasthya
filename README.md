@@ -8,8 +8,6 @@
 ### Read Health Tips
 > Prevention is better than cure. Get personal & useful health tips. Simple tips to improve your daily health or lifestyle.
 
-### CheckMe 
-> Here you can check of any disease after uploading an image of that part of your body which is suffered from the disease and provide details of the corresponding disease to you.
 
 ### Find Disease in Your Area 
 > What if you already know that this disease is spreading rapidly in your area. Is not it good? Of course it is good so that you can save yourself from suffering or take action accordingly.
