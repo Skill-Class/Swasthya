@@ -59,9 +59,11 @@ public class DailyTipsFragment extends Fragment {
      */
     private ArrayList<Integer> OfferImages = new ArrayList<>();
     private ArrayList<Integer> itemImages = new ArrayList<>();
+
     private ArrayList<String> itemName = new ArrayList<>();
 
     private ArrayList<Integer> mDesc = new ArrayList<>();
+
     private ArrayList<Integer> mTitle = new ArrayList<>();
     private ArrayList<Integer> mHeading = new ArrayList<>();
 

@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.BlogPostActivity"></activity>
+        <activity android:name=".Activity.TinytipsDetialsActivity"></activity>
+        <activity android:name=".Activity.BlogPostActivity" />
         <activity
             android:name=".Activity.DetailsGNActivity"
             android:parentActivityName=".Activity.HomeScreenActivity" />

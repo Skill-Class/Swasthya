@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.sheetalkumar.swasthya.Activity.DetailsActivity;
 import com.example.sheetalkumar.swasthya.Activity.DetailsGNActivity;
+import com.example.sheetalkumar.swasthya.Activity.TinytipsDetialsActivity;
 import com.example.sheetalkumar.swasthya.Adapter.GhareluAdapter;
 import com.example.sheetalkumar.swasthya.Adapter.OffterAdapter;
 import com.example.sheetalkumar.swasthya.R;
@@ -36,8 +37,12 @@ public class GhareluNuksheFragment extends Fragment {
      */
     private ArrayList<Integer> itemImages = new ArrayList<>();
     private ArrayList<Integer> itemName = new ArrayList<>();
+
+    private ArrayList<Integer> itemDes = new ArrayList<>();
+
     private ProgressDialog progressDialog;
 
+    public String sheetal ="Hello world";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +77,19 @@ public class GhareluNuksheFragment extends Fragment {
         itemName.add(R.string.gn_h); //1
         itemName.add(R.string.gn_i);
         itemName.add(R.string.gn_j);
+
+        itemDes.add(R.string.desc_a);
+        itemDes.add(R.string.desc_b);
+        itemDes.add(R.string.desc_c);
+        itemDes.add(R.string.desc_d);
+        itemDes.add(R.string.desc_e);
+        itemDes.add(R.string.desc_f);
+        itemDes.add(R.string.desc_g);
+        itemDes.add(R.string.desc_a);
+        itemDes.add(R.string.desc_a);
+        itemDes.add(R.string.desc_a);
+
+
 
     }
 
@@ -120,11 +138,12 @@ public class GhareluNuksheFragment extends Fragment {
 
 
 
-                Intent intent = new Intent(getActivity(), DetailsGNActivity.class);
+                Intent intent = new Intent(getActivity(), TinytipsDetialsActivity.class);
 
                 //Sending Data from a fragment to an activity (DailyTipsFragment -> DetailsActivity)
 
                  intent.putExtra("Title", itemName.get(position));
+                 intent.putExtra("Desc",itemDes.get(position));
                 //intent.putExtra("Desc", mDesc.get(position));
                 //intent.putExtra("Heading", mHeading.get(position));
 

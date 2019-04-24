@@ -53,6 +53,10 @@ dependencies {
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    //firebase ML kit for smart reply
+    //implementation 'com.google.firebase:firebase-ml-natural-language:18.2.0'
+    // implementation 'com.google.firebase:firebase-ml-natural-language-smart-reply-model:18.0.0'
+
     //alerter
 
 //    implementation 'com.google.android.gms:play-services:16.0.0'

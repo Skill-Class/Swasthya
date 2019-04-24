@@ -1,40 +1,28 @@
 package com.example.sheetalkumar.swasthya.Activity;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-import com.example.sheetalkumar.swasthya.Adapter.PagerAdapter;
+
+import com.example.sheetalkumar.swasthya.Fragment.GhareluNuksheFragment;
 import com.example.sheetalkumar.swasthya.R;
 
-
-/**
- * @Author - Sheetal Kumar
- * -------------------------------------
- * In App - DetailsGhreluNuskheActivity
- * Attached adapter - None
- * Objective -  To show the details about "Gharelu upaaye and lakshan"
- * Todo - nothing
- * Status - complete
- * -------------------------------------
- */
-
-public class DetailsGNActivity extends AppCompatActivity {
+public class TinytipsDetialsActivity extends AppCompatActivity {
 
     private TextView titleText,sheetalText;
     private Toolbar myToolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_gn);
+        setContentView(R.layout.activity_tinytips_detials);
 
         /**
          **
@@ -50,37 +38,8 @@ public class DetailsGNActivity extends AppCompatActivity {
         /**
          * Add TabLayout
          * */
-        AddTabLayoutToHomeScreen();
+       // AddTabLayoutToHomeScreen();
 
-    }
-
-    private void AddTabLayoutToHomeScreen() {
-
-        // Title of tab layout
-        tabLayout.addTab(tabLayout.newTab().setText("लक्षण"));
-        tabLayout.addTab(tabLayout.newTab().setText("घरेलू उपाय"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 
     private void CheckBundle() {
@@ -88,9 +47,12 @@ public class DetailsGNActivity extends AppCompatActivity {
         try {
             Bundle intent = getIntent().getExtras();
             Integer Title = intent.getInt("Title");
+            Integer desc = intent.getInt("Desc");
+
+            sheetalText.setText(desc);
             //Integer sheetal = intent.getInt("sheetal");
 
-           // sheetalText.setText(sheetal);
+            // sheetalText.setText(sheetal);
             titleText.setText(Title);
 
         } catch (Exception e) {
@@ -103,8 +65,8 @@ public class DetailsGNActivity extends AppCompatActivity {
 
         myToolbar = findViewById(R.id.my_toolbar);
         titleText = findViewById(R.id.title_text);
-        tabLayout = findViewById(R.id.tab_layout);
-        viewPager = findViewById(R.id.pager);
+       // tabLayout = findViewById(R.id.tab_layout);
+       // viewPager = findViewById(R.id.pager);
         sheetalText = findViewById(R.id.sheetal_text);
 
         // Adding toolbar to Home screen
@@ -112,10 +74,22 @@ public class DetailsGNActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
 
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
@@ -146,5 +120,6 @@ public class DetailsGNActivity extends AppCompatActivity {
 
         }
     }
-}
 
+
+}
